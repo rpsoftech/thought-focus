@@ -1,0 +1,51 @@
+<div
+  class="main-body h-screen min-h-screen max-h-screen w-screen max-w-[100vw] flex flex-col"
+>
+  <div
+    class="user-name flex flex-col items-center justify-center m-auto"
+    *ngIf="user_name === ''; else second"
+  >
+    <mat-form-field class="example-form-field" appearance="outline">
+      <mat-label>Your Name</mat-label>
+      <input matInput type="text" #name_input />
+      <button
+        *ngIf="name_input.value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="name_input.value = ''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="user_name = name_input.value"
+    >
+      Save Name
+    </button>
+  </div>
+  <ng-template #second>
+    <div
+      class="user-choise flex flex-col items-center justify-evenly h-[30%] m-auto"
+      *ngIf="selected_user_type === '';else third"
+    >
+    <h1>Hello {{user_name}} Please Select Type</h1>
+      <button
+        *ngFor="let user of user_typs"
+        mat-stroked-button
+        color="primary"
+        (click)="selected_user_type = user"
+      >
+        Join As {{ user }}
+      </button>
+    </div>
+  </ng-template>
+  <ng-template #third>
+    <div class="user-choise" *ngIf="selected_user_type === ''"></div>
+  </ng-template>
+  <ng-template #second>
+    <div class="user-choise" *ngIf="selected_user_type === ''"></div>
+  </ng-template>
+</div>

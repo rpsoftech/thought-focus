@@ -1,0 +1,52 @@
+{
+  "root": "apps/poc-chat-application-server",
+  "sourceRoot": "apps/poc-chat-application-server/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/poc-chat-application-server",
+        "main": "apps/poc-chat-application-server/src/main.ts",
+        "tsConfig": "apps/poc-chat-application-server/tsconfig.app.json",
+        "assets": [
+          "apps/poc-chat-application-server/src/assets"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/poc-chat-application-server/src/environments/environment.ts",
+              "with": "apps/poc-chat-application-server/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "poc-chat-application-server:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/poc-chat-application-server/**/*.ts"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

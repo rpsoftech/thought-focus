@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/poc-chatapplication",
+  "sourceRoot": "apps/poc-chatapplication/src",
+  "prefix": "thought-focus",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/poc-chatapplication",
+        "index": "apps/poc-chatapplication/src/index.html",
+        "main": "apps/poc-chatapplication/src/main.ts",
+        "polyfills": "apps/poc-chatapplication/src/polyfills.ts",
+        "tsConfig": "apps/poc-chatapplication/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/poc-chatapplication/src/favicon.ico",
+          "apps/poc-chatapplication/src/assets"
+        ],
+        "styles": [
+          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/poc-chatapplication/src/styles.scss"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/poc-chatapplication/src/environments/environment.ts",
+              "with": "apps/poc-chatapplication/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "poc-chatapplication:build:production"
+        },
+        "development": {
+          "browserTarget": "poc-chatapplication:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4211
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "poc-chatapplication:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/poc-chatapplication/src/**/*.ts",
+          "apps/poc-chatapplication/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

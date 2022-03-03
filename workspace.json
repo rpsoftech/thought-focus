@@ -1,4 +1,7 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "poc-chatapplication": "apps/poc-chatapplication",
+    "simple-socketio": "apps/simple-socketio"
+  }
 }

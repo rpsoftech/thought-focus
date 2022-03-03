@@ -1,0 +1,44 @@
+{
+  "root": "apps/simple-socketio",
+  "sourceRoot": "apps/simple-socketio/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/simple-socketio",
+        "main": "apps/simple-socketio/src/main.ts",
+        "tsConfig": "apps/simple-socketio/tsconfig.app.json",
+        "assets": ["apps/simple-socketio/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/simple-socketio/src/environments/environment.ts",
+              "with": "apps/simple-socketio/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "simple-socketio:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/simple-socketio/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
