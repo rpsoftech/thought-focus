@@ -29,9 +29,9 @@
   <ng-template #second>
     <div
       class="user-choise flex flex-col items-center justify-evenly h-[30%] m-auto"
-      *ngIf="selected_user_type === '';else third"
+      *ngIf="selected_user_type === ''; else third"
     >
-    <h1>Hello {{user_name}} Please Select Type</h1>
+      <h1>Hello {{ user_name }} Please Select Type</h1>
       <button
         *ngFor="let user of user_typs"
         mat-stroked-button
@@ -43,9 +43,119 @@
     </div>
   </ng-template>
   <ng-template #third>
-    <div class="user-choise" *ngIf="selected_user_type === ''"></div>
+    <div
+      class="user-choise flex flex-col"
+      *ngIf="selected_user_type === 'user'; else fourth"
+    >
+      <h1 class="self-center">Welcome User {{ user_name }}</h1>
+      <h1 class="self-center">SessionId = {{ sessionID }}</h1>
+      <div class="sendMessage">
+        <mat-form-field class="example-form-field" appearance="outline">
+          <mat-label>Message Here</mat-label>
+          <input matInput type="text" #msgbox />
+          <button
+            *ngIf="msgbox.value"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="msgbox.value = ''"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <button
+          class="ml-4"
+          mat-stroked-button
+          [disabled]="!msgbox.value"
+          color="primary"
+          style="margin-left: 20px"
+          (click)="sensMessage(msgbox.value); msgbox.value = ''"
+        >
+          Send
+        </button>
+      </div>
+      <div class="msgs-box">
+        <div class="msg" *ngFor="let msg of Msgs">
+          {{ msg.sessionid === sessionID ? 'You' : msg.from }}:
+          <span class="ml-3">{{ msg.msg }}</span>
+          <span class="ml-3">{{ msg.time | date: 'hh:mm:ss' }}</span>
+        </div>
+      </div>
+    </div>
   </ng-template>
-  <ng-template #second>
-    <div class="user-choise" *ngIf="selected_user_type === ''"></div>
+  <ng-template #fourth>
+    <div class="user-choise" *ngIf="selected_user_type === 'agent'">
+      <h1 class="self-center">Welcome Agent {{ user_name }}</h1>
+      <div class="sendMessage" *ngIf="agentActiveSessionID === ''">
+        <mat-form-field class="example-form-field" appearance="outline">
+          <mat-label>Session id to Join</mat-label>
+          <input matInput type="text" #sessionid />
+          <button
+            *ngIf="sessionid.value"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="sessionid.value = ''"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <button
+          class="ml-4"
+          mat-stroked-button
+          [disabled]="!sessionid.value"
+          color="primary"
+          style="margin-left: 20px"
+          (click)="joinChat(sessionid.value); sessionid.value = ''"
+        >
+          Join
+        </button>
+      </div>
+      <div class="flex" *ngIf="agentActiveSessionID !== ''">
+        <h1 class="self-center">Joined Session = {{ agentActiveSessionID }}</h1>
+        <button
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="leaveChat()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <div class="chatbox" *ngIf="agentActiveSessionID !== ''">
+        <div class="sendMessage">
+          <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>Message Here</mat-label>
+            <input matInput type="text" #msgbox />
+            <button
+              *ngIf="msgbox.value"
+              matSuffix
+              mat-icon-button
+              aria-label="Clear"
+              (click)="msgbox.value = ''"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <button
+            class="ml-4"
+            mat-stroked-button
+            [disabled]="!msgbox.value"
+            color="primary"
+            style="margin-left: 20px"
+            (click)="sensMessage(msgbox.value); msgbox.value = ''"
+          >
+            Send
+          </button>
+        </div>
+        <div class="msgs-box">
+          <div class="msg" *ngFor="let msg of Msgs">
+            {{ msg.sessionid === sessionID ? 'You' : msg.from }}:
+            <span class="ml-3">{{ msg.msg }}</span>
+            <span class="ml-3">{{ msg.time | date: 'hh:mm:ss' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </ng-template>
 </div>
