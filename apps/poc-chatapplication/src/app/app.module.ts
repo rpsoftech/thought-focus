@@ -7,8 +7,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { AutoCloseNotificationPipePipe } from './auto-close-notification-pipe.pipe';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AutoCloseNotificationPipePipe],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

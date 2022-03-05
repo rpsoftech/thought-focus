@@ -52,7 +52,7 @@
       <div class="sendMessage">
         <mat-form-field class="example-form-field" appearance="outline">
           <mat-label>Message Here</mat-label>
-          <input matInput type="text" #msgbox />
+          <input matInput (keyup)="msgChange()" type="text" #msgbox />
           <button
             *ngIf="msgbox.value"
             matSuffix
@@ -74,11 +74,28 @@
           Send
         </button>
       </div>
-      <div class="msgs-box">
-        <div class="msg" *ngFor="let msg of Msgs">
-          {{ msg.sessionid === sessionID ? 'You' : msg.from }}:
-          <span class="ml-3">{{ msg.msg }}</span>
-          <span class="ml-3">{{ msg.time | date: 'hh:mm:ss' }}</span>
+      <div class="msgs-box w-[50%]">
+        <div
+          class="msg flex border border-black"
+          [class.border-none]="msg.type === 'noti'"
+          *ngFor="let msg of Msgs"
+        >
+          <div class="flex" *ngIf="msg.type === 'msg'">
+            <span class="flex-[0.5]">
+              {{ msg.sessionid === sessionID ? 'You' : msg.from }}:
+            </span>
+            <span class="ml-3 flex-[3]">{{
+              msg.sessionid === 'bot' ? msg.msg.EN.text[0] : msg.msg
+            }}</span>
+            <span class="ml-3">{{ msg.time | date: 'hh:mm:ss' }}</span>
+          </div>
+          <div class="flex text-slate-600" *ngIf="msg.type === 'noti'">
+            <span class="ml-3 flex-1">{{ msg.msg }}</span>
+            <span class="ml-3">{{ msg.time | date: 'hh:mm:ss' }}</span>
+          </div>
+        </div>
+        <div *ngIf="TypingObsevableRemote | async; let r">
+          {{ r | autoCloseNotificationPipe: TypingNotiSubjecRemote }}
         </div>
       </div>
     </div>
@@ -126,7 +143,7 @@
         <div class="sendMessage">
           <mat-form-field class="example-form-field" appearance="outline">
             <mat-label>Message Here</mat-label>
-            <input matInput type="text" #msgbox />
+            <input matInput type="text" (keyup)="msgChange()" #msgbox />
             <button
               *ngIf="msgbox.value"
               matSuffix
@@ -148,11 +165,28 @@
             Send
           </button>
         </div>
-        <div class="msgs-box">
-          <div class="msg" *ngFor="let msg of Msgs">
-            {{ msg.sessionid === sessionID ? 'You' : msg.from }}:
-            <span class="ml-3">{{ msg.msg }}</span>
-            <span class="ml-3">{{ msg.time | date: 'hh:mm:ss' }}</span>
+        <div class="msgs-box w-[50%]">
+          <div
+            class="msg border border-black"
+            [class.border-none]="msg.type === 'noti'"
+            *ngFor="let msg of Msgs"
+          >
+            <div class="flex" *ngIf="msg.type === 'msg'">
+              <span class="flex-[0.5]">
+                {{ msg.sessionid === sessionID ? 'You' : msg.from }}:
+              </span>
+              <span class="ml-3 flex-[3]">{{
+                msg.sessionid === 'bot' ? msg.msg.EN.text[0] : msg.msg
+              }}</span>
+              <span class="ml-3">{{ msg.time | date: 'hh:mm:ss' }}</span>
+            </div>
+            <div class="flex text-slate-600" *ngIf="msg.type === 'noti'">
+              <span class="ml-3 flex-1">{{ msg.msg }}</span>
+              <span class="ml-3">{{ msg.time | date: 'hh:mm:ss' }}</span>
+            </div>
+          </div>
+          <div *ngIf="TypingObsevableRemote | async; let r">
+            {{ r | autoCloseNotificationPipe: TypingNotiSubjecRemote }}
           </div>
         </div>
       </div>
