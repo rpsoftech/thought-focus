@@ -15,7 +15,8 @@
       "configurations": {
         "production": {
           "optimization": true,
-          "extractLicenses": true,
+          "extractLicenses": false,
+          "externalDependencies": "none",
           "inspect": false,
           "fileReplacements": [
             {
