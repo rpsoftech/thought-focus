@@ -19,9 +19,13 @@
     "@angular/material": "^13.2.5",
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
+    "@angular/platform-server": "^13.2.0",
     "@angular/router": "~13.2.0",
+    "@nguniversal/express-engine": "^13.0.2",
     "@nrwl/angular": "^13.8.4",
     "axios": "^0.26.0",
+    "compression": "^1.7.4",
+    "express": "^4.15.2",
     "jsonwebtoken": "^8.5.1",
     "rxjs": "~7.4.0",
     "socket.io": "^4.4.1",
@@ -37,6 +41,7 @@
     "@angular/cli": "~13.2.0",
     "@angular/compiler-cli": "~13.2.0",
     "@angular/language-service": "~13.2.0",
+    "@nguniversal/builders": "^13.0.2",
     "@nrwl/cli": "13.8.4",
     "@nrwl/eslint-plugin-nx": "13.8.4",
     "@nrwl/linter": "13.8.4",
@@ -44,6 +49,8 @@
     "@nrwl/nx-cloud": "^13.1.6",
     "@nrwl/tao": "13.8.4",
     "@nrwl/workspace": "13.8.4",
+    "@types/compression": "^1.7.2",
+    "@types/express": "^4.17.0",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "~5.10.0",
@@ -55,5 +62,9 @@
     "prettier": "^2.5.1",
     "tailwindcss": "^3.0.2",
     "typescript": "~4.5.2"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.6",
+    "utf-8-validate": "^5.0.8"
   }
 }

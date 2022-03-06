@@ -6,11 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/poc-chatapplication",
+        "outputPath": "dist/apps/poc-chatapplication/browser",
         "index": "apps/poc-chatapplication/src/index.html",
         "main": "apps/poc-chatapplication/src/main.ts",
         "polyfills": "apps/poc-chatapplication/src/polyfills.ts",
@@ -88,6 +86,62 @@
           "apps/poc-chatapplication/src/**/*.html"
         ]
       }
+    },
+    "server": {
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/apps/poc-chatapplication/server",
+        "main": "apps/poc-chatapplication/server.ts",
+        "tsConfig": "apps/poc-chatapplication/tsconfig.server.json"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media",
+          "fileReplacements": [
+            {
+              "replace": "apps/poc-chatapplication/src/environments/environment.ts",
+              "with": "apps/poc-chatapplication/src/environments/environment.prod.ts"
+            }
+          ]
+        },
+        "development": {
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-ssr": {
+      "executor": "@nguniversal/builders:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "poc-chatapplication:build:development",
+          "serverTarget": "poc-chatapplication:server:development"
+        },
+        "production": {
+          "browserTarget": "poc-chatapplication:build:production",
+          "serverTarget": "poc-chatapplication:server:production"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "prerender": {
+      "executor": "@nguniversal/builders:prerender",
+      "options": {
+        "routes": ["/"]
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "poc-chatapplication:build:production",
+          "serverTarget": "poc-chatapplication:server:production"
+        },
+        "development": {
+          "browserTarget": "poc-chatapplication:build:development",
+          "serverTarget": "poc-chatapplication:server:development"
+        }
+      },
+      "defaultConfiguration": "production"
     }
   },
   "tags": []

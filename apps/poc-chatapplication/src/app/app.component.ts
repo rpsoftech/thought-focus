@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { isPlatformServer } from '@angular/common';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { debounceTime, Subject } from 'rxjs';
 import { io, Socket } from 'socket.io-client';
 import { environment } from '../environments/environment';
@@ -56,7 +58,10 @@ export class AppComponent {
   private conn!: Socket;
   agentJoinObser = new Subject();
   agentActiveSessionID = '';
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) platForm:any) {
+    if(isPlatformServer(platForm)){
+      return;
+    }
     const u = sessionStorage.getItem('user_name');
     this._user_name = u !== null ? u : '';
     const u2 = sessionStorage.getItem('session_id');
@@ -83,7 +88,7 @@ export class AppComponent {
         this.Msgs.push(a);
       })
       .on('typing', (s) => this.TypingNotiSubjecRemote.next(s));
-    this.TypingNotiSubjec.pipe(debounceTime(1000)).subscribe((a) =>
+    this.TypingNotiSubjec.pipe(debounceTime(100)).subscribe((a) =>
       this.conn.emit('typing', a)
     );
     this.agentJoinObser.subscribe((a) => this.conn.emit('join', a));

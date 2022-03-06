@@ -11,7 +11,7 @@ import { AutoCloseNotificationPipePipe } from './auto-close-notification-pipe.pi
 @NgModule({
   declarations: [AppComponent, AutoCloseNotificationPipePipe],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     FormsModule,
     MatButtonModule,
