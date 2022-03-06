@@ -5,8 +5,6 @@ export const BotIdWithContext: {
 } = {};
 
 export async function RequestToBot(text: string, botid?: string) {
-  console.log(text);
-  
   return ax.default
     .post<BotAPIResponse>('https://yanademo-orchestrator.yanaimpl.com/', {
       text: text,
