@@ -31,6 +31,7 @@ export async function RequestToBot(text: string, botid?: string) {
       return {
           bot_id:a.data.context.bot_conversation_id,
           response:a.data.output,
+          extra:a.data
       }
     });
 }

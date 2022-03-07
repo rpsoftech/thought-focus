@@ -9,6 +9,7 @@ const server = new Server({
 interface MsgInterface {
   type: 'msg' | 'noti';
   from: string;
+  extra?:any;
   sessionid: string;
   msg: string | Output;
   time: number;
@@ -76,6 +77,7 @@ server
         sendMEssageTosessionid(chatroomid, {
           from: 'bot',
           msg: res.response,
+          extra:res.extra,
           sessionid: 'bot',
           time: Date.now(),
           type: 'msg',
@@ -138,4 +140,4 @@ server.of('agent').on('connect', (s) => {
   });
 });
 
-server.listen(3000);
+server.listen(3100);

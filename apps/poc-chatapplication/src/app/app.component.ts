@@ -88,7 +88,7 @@ export class AppComponent {
         this.Msgs.push(a);
       })
       .on('typing', (s) => this.TypingNotiSubjecRemote.next(s));
-    this.TypingNotiSubjec.pipe(debounceTime(100)).subscribe((a) =>
+    this.TypingNotiSubjec.pipe(debounceTime(500)).subscribe((a) =>
       this.conn.emit('typing', a)
     );
     this.agentJoinObser.subscribe((a) => this.conn.emit('join', a));
