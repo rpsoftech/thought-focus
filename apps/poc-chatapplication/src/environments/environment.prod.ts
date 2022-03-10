@@ -1,4 +1,4 @@
 export const environment = {
-  api:'http://office2.rpsoftech.net:3100',
+  api:'http://13.59.1.13:3001',
   production: true,
 };
