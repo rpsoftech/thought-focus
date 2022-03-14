@@ -1,0 +1,44 @@
+{
+  "root": "apps/sample-socket-v2",
+  "sourceRoot": "apps/sample-socket-v2/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/sample-socket-v2",
+        "main": "apps/sample-socket-v2/src/main.ts",
+        "tsConfig": "apps/sample-socket-v2/tsconfig.app.json",
+        "assets": ["apps/sample-socket-v2/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/sample-socket-v2/src/environments/environment.ts",
+              "with": "apps/sample-socket-v2/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "sample-socket-v2:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/sample-socket-v2/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
