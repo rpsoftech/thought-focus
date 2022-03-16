@@ -8,6 +8,9 @@
     "test": "nx test",
     "postinstall": "ngcc --properties es2015 browser module main"
   },
+  "workspaces": [
+    "apps/sample-socket-v2"
+  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.2.0",
@@ -23,6 +26,7 @@
     "@angular/router": "~13.2.0",
     "@nguniversal/express-engine": "^13.0.2",
     "@nrwl/angular": "^13.8.4",
+    "@prisma/client": "^3.11.0",
     "axios": "^0.26.0",
     "compression": "^1.7.4",
     "express": "^4.15.2",
@@ -31,6 +35,7 @@
     "socket.io": "^4.4.1",
     "socket.io-client": "^4.4.1",
     "tslib": "^2.0.0",
+    "uuid": "^8.3.2",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -53,6 +58,7 @@
     "@types/express": "^4.17.0",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "16.11.7",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "~5.10.0",
     "@typescript-eslint/parser": "~5.10.0",
     "autoprefixer": "^10.4.0",
@@ -60,6 +66,7 @@
     "eslint-config-prettier": "8.1.0",
     "postcss": "^8.4.5",
     "prettier": "^2.5.1",
+    "prisma": "^3.11.0",
     "tailwindcss": "^3.0.2",
     "typescript": "~4.5.2"
   },
