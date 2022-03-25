@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  api:'http://office2.rpsoftech.net:3100',
+  api:'http://localhost:3101',
   production: false,
 };
 

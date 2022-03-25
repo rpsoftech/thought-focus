@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 })
 export class AutoCloseNotificationPipePipe implements PipeTransform {
   timeout!: any;
-  transform(value: string, Obse: Subject<string>): string {
+  transform(value: string, Obse: Subject<string>, timeout = 5000): string {
     if (value === '') {
       return '';
     }
@@ -16,7 +16,7 @@ export class AutoCloseNotificationPipePipe implements PipeTransform {
     }
     this.timeout = setTimeout(() => {
       Obse.next('');
-    }, 5000);
+    }, timeout);
     return value;
   }
 }

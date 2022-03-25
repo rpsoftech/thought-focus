@@ -1,0 +1,14 @@
+<div
+  class="chat-bubble-body h-16 border-solid border flex items-center"
+  (click)="onElementClick()"
+>
+  <div
+    class="chat border bottom-solid border-black flex m-2 items-center justify-center w-[50px] h-[50px] rounded-[50%]"
+  >
+    {{ name | getCharTllLength: 1 }}
+  </div>
+  <div class="right flex flex-col">
+    <div class="name">{{ name }}</div>
+    <!-- <div class="lastmessage">{{ last_message }}</div> -->
+  </div>
+</div>

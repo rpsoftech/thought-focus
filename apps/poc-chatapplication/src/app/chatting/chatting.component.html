@@ -1,0 +1,34 @@
+<div
+  class="chat-header border-b-[1px] border-solid border-black flex w-full h-12 items-center mt-2"
+>
+  <div
+    class="rounded-[50%] m-2 border border-solid flex justify-center items-center w-7 h-7"
+  >
+    {{ active_chat_name | getCharTllLength }}
+  </div>
+  <div class="chat_header_right flex flex-col">
+    <span>{{ active_chat_name }}</span>
+    <span>{{ active_last_message_at | date: 'hh:MM:SS a' }}</span>
+  </div>
+  <div
+    class="chat_heade_noti ml-10"
+    *ngIf="notification_obse | async; let noti"
+  >
+    status: {{ noti | autoCloseNotificationPipe: notification_obse }}
+  </div>
+</div>
+<div class="chat_body overflow-y-auto flex-auto">
+  <div class="msg flex m-3" *ngFor="let m of chat_history">
+    <span class="from flex-2 w-20"
+      >{{
+        m.chm_type === 'A' ? m.chm_from : m.chm_type === 'B' ? 'BOT' : 'YOU'
+      }}: &nbsp;</span
+    >
+    <div class="msg_body flex-auto">{{ m.chm_message }}</div>
+    <div class="time flex-1">{{ m.cha_created_at | date: 'hh:MM:SS a' }}</div>
+  </div>
+</div>
+<div class="chat_footer h-9 flex items-center">
+  <input [(ngModel)]="chat_message" />
+  <button (click)="sendMessgae()">send</button>
+</div>

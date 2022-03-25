@@ -21,7 +21,7 @@ model Agent {
   agent_email      String             @unique(map: "agent_email") @db.VarChar(80)
   agent_password   String             @db.VarChar(60)
   agent_uname      String             @unique(map: "agent_uname") @db.VarChar(30)
-  agent_extra      Json
+  agent_extra      String             @db.LongText
   agent_created_at BigInt
   AgentCatMap      AgentCatMap[]
   AgentSkillSetMap AgentSkillSetMap[]
@@ -101,7 +101,7 @@ model ChatMessageHistory {
   chm_from            String                      @db.VarChar(50)
   chm_message         String                      @db.Text
   chm_type            ChatMessageHistory_chm_type
-  chm_extra           Json
+  chm_extra           String                      @db.LongText
   cha_created_at      BigInt
   ChatSessions        ChatSessions                @relation(fields: [chm_chat_session_id], references: [chat_session_id], onDelete: Cascade, map: "ChatMessageHistory_ibfk_1")
 
@@ -115,7 +115,7 @@ model ChatSessions {
   chat_session_id      Int                  @id @default(autoincrement())
   chat_session_uniq_id String               @unique(map: "chat_session_uniq_id") @db.VarChar(30)
   chat_session_status  Int
-  chat_session_extra   Json
+  chat_session_extra   String               @db.LongText
   ChatAgentMap         ChatAgentMap[]
   ChatMessageHistory   ChatMessageHistory[]
   UserChatSessionMap   UserChatSessionMap[]
@@ -143,7 +143,6 @@ enum ChatMessageHistory_chm_type {
   U
   A
   B
-  EMPTY_ENUM_VALUE @map("")
 }
 
 enum SkillSet_skill_type {

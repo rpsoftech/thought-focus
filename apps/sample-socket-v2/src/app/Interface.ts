@@ -10,3 +10,11 @@ export interface AgentAuth extends Agent {
   password: string;
   session_id: string;
 }
+
+export const ChatStatus = {
+  active: 1,
+  inactive: 0,
+  with_bot: 2,
+  with_agent: -1,
+  finished: -2,
+};
