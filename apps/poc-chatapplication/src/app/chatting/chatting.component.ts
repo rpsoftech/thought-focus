@@ -4,6 +4,7 @@ import {
   debounceTime,
   distinctUntilChanged,
   filter,
+  Observable,
   Subject,
   Subscription,
 } from 'rxjs';
@@ -16,7 +17,7 @@ import { ChatMessageHistory } from '../services/interface';
   styleUrls: ['./chatting.component.scss'],
 })
 export class ChattingComponent implements OnInit, OnDestroy {
-  @Input() chatid!: Subject<string>;
+  @Input() chatid!: Observable<string>;
   active_chatid = '';
   @Input() active = false;
   subscri: Subscription[] = [];

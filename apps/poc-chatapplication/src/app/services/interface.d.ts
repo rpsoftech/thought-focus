@@ -129,7 +129,7 @@ export const ChatMessageHistory_chm_type: {
   U: 'U';
   A: 'A';
   B: 'B';
-  EMPTY_ENUM_VALUE: 'EMPTY_ENUM_VALUE';
+  N: 'N';
 };
 
 export type ChatMessageHistory_chm_type =

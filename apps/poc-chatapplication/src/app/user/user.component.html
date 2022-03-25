@@ -1,1 +1,34 @@
-<p>user works!</p>
+<div class="user_container h-screen w-screen bg-slate-300">
+  <div
+    class="user_details flex flex-col justify-center items-center h-full"
+    *ngIf="basic.user_name_user === ''"
+  >
+    <mat-form-field class="example-form-field" appearance="outline">
+      <mat-label>User Name</mat-label>
+      <input matInput type="text" #name_input />
+      <button
+        *ngIf="name_input.value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="name_input.value = ''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="name_input.value === ''"
+      (click)="basic.user_name_user = name_input.value; AfterNameSaved()"
+    >
+      Save
+    </button>
+  </div>
+  <div
+    class="user_details"
+    *ngIf="basic.user_name_user !== '' && basic.session_id !== ''"
+  >
+  <thought-focus-chatting [chatid]="ChatIdSubjec"></thought-focus-chatting>
+</div>
+</div>

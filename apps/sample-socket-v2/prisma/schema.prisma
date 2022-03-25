@@ -73,12 +73,12 @@ model AgentStatus {
 model ChatAgentMap {
   cam_id              Int          @id @default(autoincrement())
   cam_agent_id        Int
-  cam_chat_session_id Int
+  cam_chat_session_id String       @db.VarChar(40)
   cam_chat_status     Int
   cam_last_message    String       @db.Text
   cam_edited_on       Int
   Agent               Agent        @relation(fields: [cam_agent_id], references: [agent_id], onDelete: Cascade, map: "ChatAgentMap_ibfk_1")
-  ChatSessions        ChatSessions @relation(fields: [cam_chat_session_id], references: [chat_session_id], onDelete: Cascade, map: "ChatAgentMap_ibfk_2")
+  ChatSessions        ChatSessions @relation(fields: [cam_chat_session_id], references: [chat_session_uniq_id], onDelete: Cascade, map: "ChatAgentMap_ibfk_2")
 
   @@index([cam_agent_id], map: "cam_agent_id")
   @@index([cam_chat_session_id], map: "cam_chat_session_id")
@@ -125,11 +125,11 @@ model SkillSet {
 }
 
 model UserChatSessionMap {
-  ucsm_id         String       @unique(map: "ucsm_id") @db.VarChar(30)
-  ucsm_session_id Int
-  ChatSessions    ChatSessions @relation(fields: [ucsm_session_id], references: [chat_session_id], onDelete: Cascade, map: "UserChatSessionMap_ibfk_1")
+  ucsm_id         String        @unique(map: "ucsm_id") @db.VarChar(40)
+  ucsm_session_id Int?
+  ChatSessions    ChatSessions? @relation(fields: [ucsm_session_id], references: [chat_session_id], map: "UserChatSessionMap_ibfk_1")
 
-  @@index([ucsm_session_id], map: "ucsm_session_id")
+  @@index([ucsm_session_id], map: "UserChatSessionMap_ibfk_1")
 }
 
 enum AgentCat_agent_cat_type {
@@ -143,6 +143,7 @@ enum ChatMessageHistory_chm_type {
   U
   A
   B
+  N
 }
 
 enum SkillSet_skill_type {

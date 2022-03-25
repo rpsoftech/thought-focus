@@ -2,7 +2,9 @@ import { Agent } from '@prisma/client';
 
 export interface UserAuth {
   uid: string;
+  user_name_user: string;
   session_id: string;
+  bot_id: string;
 }
 export interface AgentAuth extends Agent {
   agent: string;

@@ -10,6 +10,10 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class BasicService {
   private _user_name = '';
   private _password = '';
+  private _user_name_user = '';
+  private _user_id = '';
+  private _session_id = '';
+  SessionIdSubject = new BehaviorSubject('');
   user_type = '';
   ChatHistoryHeader = new BehaviorSubject<
     (ChatAgentMap & {
@@ -27,6 +31,28 @@ export class BasicService {
     notification: string;
   }> = new Subject();
   conn!: Socket;
+  public get session_id() {
+    return this._session_id;
+  }
+  public set session_id(value) {
+    localStorage.setItem('session_id', value);
+    this.SessionIdSubject.next(value);
+    this._session_id = value;
+  }
+  public get user_id() {
+    return this._user_id;
+  }
+  public set user_id(value) {
+    localStorage.setItem('uid', value);
+    this._user_id = value;
+  }
+  public get user_name_user() {
+    return this._user_name_user;
+  }
+  public set user_name_user(value) {
+    localStorage.setItem('user_name_user', value);
+    this._user_name_user = value;
+  }
   public get user_name() {
     return sessionStorage.getItem('user_name') as any;
   }
@@ -41,13 +67,24 @@ export class BasicService {
     this._password = value;
     sessionStorage.setItem('password', value);
   }
-  constructor(private vanilla: VanillaService) {}
+  constructor(private vanilla: VanillaService) {
+    const i = localStorage.getItem('user_name_user');
+    if (i !== null) this.user_name_user = i;
+    const i1 = localStorage.getItem('uid');
+    if (i1 !== null) this.user_id = i1;
+    const i2 = localStorage.getItem('session_id');
+    if (i2 !== null) this.session_id = i2;
+    // const i3 = localStorage.getItem('user_id');
+    // if (i3 !== null) this.user_id = i3;
+  }
   connect() {
     return new Promise<boolean>((res, rej) => {
       this.vanilla.LoaderSubject.next(true);
       this.conn = io(`${environment.api}/${this.user_type}`, {
         auth: {
           user_name: this.user_name,
+          user_name_user: this.user_name_user,
+          uid: this.user_id,
           password: this.password,
         },
         transports: ['websocket'],
@@ -56,10 +93,18 @@ export class BasicService {
           this.vanilla.LoaderSubject.next(false);
           res(true);
         })
+        .on('session_id', (a) => {
+          this.session_id = a;
+        })
+        .onAny(console.log)
+        .on('uid', (a) => {
+          this.user_id = a;
+        })
         .on('connect_error', (err: any) => {
           this.vanilla.LoaderSubject.next(false);
           rej(true);
           this.user_name = this.password = null;
+          this.user_name_user = '';
           this.conn.close();
           this.conn.disconnect();
         })
@@ -80,6 +125,11 @@ export class BasicService {
         .on('noti', (a) => this.NotiSubject.next(a))
         .on('msg', (a: ChatMessageHistory) => {
           this.MessageSubject.next(a);
+          this.updateLastMessage(
+            a.chm_chat_session_id,
+            a.cha_created_at,
+            a.chm_message
+          );
         });
     });
   }
@@ -96,6 +146,9 @@ export class BasicService {
     time: number,
     last_message: string
   ) {
+    if (this.user_type === 'user') {
+      return;
+    }
     const a = this.ChatHistoryHeader.value;
     a.forEach((a1) => {
       if (a1.ChatSessions.chat_session_uniq_id === session_id) {
