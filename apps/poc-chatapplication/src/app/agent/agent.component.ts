@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { BasicService } from '../services/Basic.service';
+import { ChatAgentMap, ChatSessions } from '../services/interface';
 import { VanillaService } from '../services/Vanilla.service';
 @Component({
   selector: 'thought-focus-agent',
@@ -10,23 +12,34 @@ export class AgentComponent {
   show_user_password = false;
   user_name = '';
   password = '';
+  ChatIdSubject = new Subject<string>();
+  ChatHistory!: Observable<
+    (ChatAgentMap & {
+      ChatSessions: ChatSessions;
+    })[]
+  >;
   constructor(private basic: BasicService, private vanilla: VanillaService) {
     basic.user_type = 'agent';
-    if (basic.user_name !== null && basic.password !== null)
-      basic.connect().catch(() => {
+    this.ChatHistory = basic.ChatHistoryHeader.asObservable();
+    if (basic.user_name !== null && basic.password !== null) this.connect();
+    else this.show_user_password = true;
+  }
+  private connect() {
+    this.basic
+      .connect()
+      .then(() => {
+        this.show_user_password = false;
+        this.basic.conn.emit('act_history');
+      })
+      .catch(() => {
         this.show_user_password = true;
       });
-    else this.show_user_password = true;
   }
   Save() {
     if (this.user_name !== '' && this.password !== '') {
       this.basic.user_name = this.user_name;
       this.basic.password = this.password;
-      this.basic
-        .connect()
-        .catch(() => {
-          this.show_user_password = true;
-        });
+      this.connect();
     }
   }
 }

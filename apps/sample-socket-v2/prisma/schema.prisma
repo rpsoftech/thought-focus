@@ -7,21 +7,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model UserChatSessionMap {
-  ucsm_id         String       @unique(map: "ucsm_id") @db.VarChar(30)
-  ucsm_session_id Int
-  ChatSessions    ChatSessions @relation(fields: [ucsm_session_id], references: [chat_session_id], onDelete: Cascade, map: "UserChatSessionMap_ibfk_1")
-
-  @@index([ucsm_session_id], map: "ucsm_session_id")
-}
-
 model Agent {
   agent_id         Int                @id @default(autoincrement())
   agent_name       String             @db.VarChar(50)
   agent_email      String             @unique(map: "agent_email") @db.VarChar(80)
   agent_password   String             @db.VarChar(60)
   agent_uname      String             @unique(map: "agent_uname") @db.VarChar(30)
-  agent_extra      String             @db.LongText
+  agent_extra      Json
   agent_created_at BigInt
   AgentCatMap      AgentCatMap[]
   AgentSkillSetMap AgentSkillSetMap[]
@@ -84,7 +76,7 @@ model ChatAgentMap {
   cam_chat_session_id Int
   cam_chat_status     Int
   cam_last_message    String       @db.Text
-  cam_edited_on       BigInt
+  cam_edited_on       Int
   Agent               Agent        @relation(fields: [cam_agent_id], references: [agent_id], onDelete: Cascade, map: "ChatAgentMap_ibfk_1")
   ChatSessions        ChatSessions @relation(fields: [cam_chat_session_id], references: [chat_session_id], onDelete: Cascade, map: "ChatAgentMap_ibfk_2")
 
@@ -96,14 +88,14 @@ model ChatAgentMap {
 
 model ChatMessageHistory {
   chm_id              Int                         @id @default(autoincrement())
-  chm_chat_session_id Int
-  chm_uniq_id         String                      @unique(map: "chm_uniq_id") @db.VarChar(30)
+  chm_chat_session_id String                      @db.VarChar(40)
+  chm_uniq_id         String                      @unique(map: "chm_uniq_id") @db.VarChar(40)
   chm_from            String                      @db.VarChar(50)
   chm_message         String                      @db.Text
   chm_type            ChatMessageHistory_chm_type
-  chm_extra           String                      @db.LongText
-  cha_created_at      BigInt
-  ChatSessions        ChatSessions                @relation(fields: [chm_chat_session_id], references: [chat_session_id], onDelete: Cascade, map: "ChatMessageHistory_ibfk_1")
+  chm_extra           Json
+  cha_created_at      Int
+  ChatSessions        ChatSessions                @relation(fields: [chm_chat_session_id], references: [chat_session_uniq_id], onDelete: Cascade, map: "ChatMessageHistory_ibfk_1")
 
   @@index([cha_created_at], map: "cha_created_at")
   @@index([chm_chat_session_id], map: "chm_chat_session_id")
@@ -113,9 +105,9 @@ model ChatMessageHistory {
 
 model ChatSessions {
   chat_session_id      Int                  @id @default(autoincrement())
-  chat_session_uniq_id String               @unique(map: "chat_session_uniq_id") @db.VarChar(30)
+  chat_session_uniq_id String               @unique(map: "chat_session_uniq_id") @db.VarChar(40)
   chat_session_status  Int
-  chat_session_extra   String               @db.LongText
+  chat_session_extra   Json
   ChatAgentMap         ChatAgentMap[]
   ChatMessageHistory   ChatMessageHistory[]
   UserChatSessionMap   UserChatSessionMap[]
@@ -130,6 +122,14 @@ model SkillSet {
   AgentSkillSetMap AgentSkillSetMap[]
 
   @@index([skill_type], map: "skill_type")
+}
+
+model UserChatSessionMap {
+  ucsm_id         String       @unique(map: "ucsm_id") @db.VarChar(30)
+  ucsm_session_id Int
+  ChatSessions    ChatSessions @relation(fields: [ucsm_session_id], references: [chat_session_id], onDelete: Cascade, map: "UserChatSessionMap_ibfk_1")
+
+  @@index([ucsm_session_id], map: "ucsm_session_id")
 }
 
 enum AgentCat_agent_cat_type {

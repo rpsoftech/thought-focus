@@ -2,20 +2,39 @@
   class="agent-container relative flex h-screen w-screen bg-slate-400"
   *ngIf="show_user_password === false"
 >
-  <div class="left w-[25%] h-screen border-r-[1px] border-solid border-black">
-    <thought-focus-chatting-bubble></thought-focus-chatting-bubble>
+  <div
+    class="left w-[25%] h-screen border-r-[1px] border-solid border-black"
+    *ngIf="ChatHistory | async; let cc"
+  >
+    <div *ngFor="let c of cc">
+      <thought-focus-chatting-bubble
+        [name]="c.ChatSessions.chat_session_extra.name"
+        (click)="ChatIdSubject.next(c.ChatSessions.chat_session_uniq_id)"
+      ></thought-focus-chatting-bubble>
+    </div>
   </div>
   <div class="right relative flex w-[75%] flex-col h-screen">
-    <thought-focus-chatting></thought-focus-chatting>
+    <thought-focus-chatting [chatid]="ChatIdSubject"></thought-focus-chatting>
   </div>
 </div>
 <div
   class="w-screen h-screen flex flex-col justify-center items-center"
   *ngIf="show_user_password"
 >
-  <input class="border m-4 border-solid" placeholder="user_name" [(ngModel)]="user_name" />
-  <input class="border m-4 border-solid" placeholder="passwor" [(ngModel)]="password" />
-  <button (click)="Save()" class="w-16 border border-solid m-4 p-1 rounded-lg hover:bg-white hover:text-black text-white bg-black">
+  <input
+    class="border m-4 border-solid"
+    placeholder="user_name"
+    [(ngModel)]="user_name"
+  />
+  <input
+    class="border m-4 border-solid"
+    placeholder="passwor"
+    [(ngModel)]="password"
+  />
+  <button
+    (click)="Save()"
+    class="w-16 border border-solid m-4 p-1 rounded-lg hover:bg-white hover:text-black text-white bg-black"
+  >
     SAVE
   </button>
 </div>

@@ -2,6 +2,8 @@
 import { DbPrisma, server } from './app/Database';
 import { AgentAuth, UserAuth, ChatStatus } from './app/Interface';
 import { v4 as uuidv4 } from 'uuid';
+import { ChatMessageHistory_chm_type } from '@prisma/client';
+import { Socket } from 'socket.io';
 
 const port = process.env['PORT'] || 3101;
 server.listen(+port);
@@ -49,8 +51,6 @@ server.of('user').use(async (s) => {
 });
 server.of('agent').use(async (s, n) => {
   let agent: AgentAuth = s.handshake.auth as any;
-
-  console.log(s.id);
   s.request.complete = true;
   if (
     agent.user_name &&
@@ -65,13 +65,14 @@ server.of('agent').use(async (s, n) => {
       },
     });
     if (a === null) {
+      console.log(a);
       const err: any = new Error('not authorized');
       err.data = { content: 'Please retry later' };
       n(err);
       return;
     }
+    console.log(s.id);
     agent = Object.assign(agent, a);
-    console.log(agent);
     s.handshake.auth = agent;
     n();
   } else {
@@ -84,32 +85,104 @@ server.of('agent').use(async (s, n) => {
 server.of('user').on('connect', async (s) => {
   // const user: UserAuth = s.handshake.auth as any;
 });
+server.of('agent').on('disconnect', (s) => {
+  console.log(s.handshake.auth);
+});
 server.of('agent').on('connect', async (s) => {
   const agent: AgentAuth = s.handshake.auth as any;
-  s.on('act_history', async () => {
-    return await GetAgentChatHistoryHeader(agent.agent_id, ChatStatus.active);
+  DbPrisma.agentStatus.upsert({
+    where: {
+      agent_status_id: agent.agent_id,
+    },
+    create: {
+      agent_availability: 1,
+      agent_capacity: 3,
+      agent_current_capacity: 3,
+      agent_status_id: agent.agent_id,
+    },
+    update: {
+      agent_availability: 1,
+    },
   });
-  s.on('emit_chat_id', (a) => {
-    console.log(a);
+  GetAgentChatHistoryHeader(agent.agent_id, ChatStatus.active).then((a) => {
+    a.forEach((c) => {
+      s.join(c.ChatSessions.chat_session_uniq_id);
+    });
+  });
+  s.on('chat_hist', async (c) => {
+    const chat_data = await DbPrisma.chatMessageHistory.findMany({
+      where: {
+        chm_chat_session_id: c,
+      },
+    });
+    s.emit('chat_hist', {
+      session_id: c,
+      hist: chat_data,
+    });
+  });
+  s.on('noti', (session_id: string, noti: string) => {
+    s.to(session_id);
+    SendNotification(session_id, `${agent.agent_name} is ${noti}`, s, 'admin');
+  });
+  s.on('act_history', async () => {
+    s.emit(
+      'act_history',
+      await GetAgentChatHistoryHeader(agent.agent_id, ChatStatus.active)
+    );
+  });
+  s.on('disconnect', () => {
+    DbPrisma.agentStatus.update({
+      where: {
+        agent_status_id: agent.agent_id,
+      },
+
+      data: {
+        agent_availability: 0,
+      },
+    });
+  });
+  s.on('emit_chat_id', (chat_id: string, message: string) => {
+    AddMessageToChat(chat_id, agent.agent_name, 'A', message, {});
   });
 });
-function AddMessageToChat(
-  chat_id: number,
+async function SendNotification(
+  session_id: string,
+  notification: string,
+  so: Socket,
+  namespace_to: 'user' | 'admin' | ['user', 'admin']
+) {
+  if (Array.isArray(namespace_to)) {
+    namespace_to.forEach((n) => {
+      server.of(n).to(session_id).emit('noti', { session_id, notification });
+    });
+  } else {
+    server
+      .of(namespace_to)
+      .to(session_id)
+      .emit('noti', { session_id, notification });
+  }
+  so.to(session_id).emit('noti', { session_id, notification });
+}
+async function AddMessageToChat(
+  session_id: string,
   from: string,
+  chm_type: ChatMessageHistory_chm_type,
   messgae: string,
   chat_extra = {}
 ) {
-  DbPrisma.chatMessageHistory.create({
+  const msg = await DbPrisma.chatMessageHistory.create({
     data: {
-      cha_created_at: Date.now(),
+      cha_created_at: GetTimeStamp(),
       chm_extra: JSON.stringify(chat_extra),
       chm_from: from,
       chm_message: messgae,
       chm_uniq_id: uuidv4(),
-      chm_chat_session_id: chat_id,
-      chm_type: 'A',
+      chm_chat_session_id: session_id,
+      chm_type: chm_type,
     },
   });
+  server.of('user').to(session_id).emit('msg', msg);
+  server.of('agent').to(session_id).emit('msg', msg);
 }
 function GetAgentChatHistoryHeader(agent_id: number, with_status?: number) {
   return DbPrisma.chatAgentMap.findMany({
@@ -121,4 +194,8 @@ function GetAgentChatHistoryHeader(agent_id: number, with_status?: number) {
       ChatSessions: true,
     },
   });
+}
+
+function GetTimeStamp() {
+  return Math.floor(Date.now() / 1000);
 }
