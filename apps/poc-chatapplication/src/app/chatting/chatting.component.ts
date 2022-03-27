@@ -8,8 +8,9 @@ import {
   Subject,
   Subscription,
 } from 'rxjs';
-import { BasicService } from '../services/Basic.service';
+import { BasicService, ChatStatus } from '../services/Basic.service';
 import { ChatMessageHistory } from '../services/interface';
+import { VanillaService } from '../services/Vanilla.service';
 
 @Component({
   selector: 'thought-focus-chatting',
@@ -19,11 +20,13 @@ import { ChatMessageHistory } from '../services/interface';
 export class ChattingComponent implements OnInit, OnDestroy {
   @Input() chatid!: Observable<string>;
   active_chatid = '';
+  TypeChatStatus = ChatStatus;
   @Input() active = false;
   subscri: Subscription[] = [];
+  chat_status = ChatStatus.active;
   @Input() chat_history: ChatMessageHistory[] = [];
   @Input() active_chat_name = 'Keyur Shah';
-  @Input() active_last_message_at = 17880808088000;
+  @Input() active_last_message_at = Date.now();
   @Input() notification_obse = new BehaviorSubject<string>('');
   @Input() chat_message = '';
   TypingSubject = new Subject<void>();
@@ -36,6 +39,15 @@ export class ChattingComponent implements OnInit, OnDestroy {
         })
       );
     }
+    this.subscri.push(
+      this.basic.ChatIdStatusSubject.pipe(
+        filter((a) =>
+          this.active_chatid ? a.chat_id === this.active_chatid : false
+        )
+      ).subscribe((a) => {
+        this.chat_status = a.status;
+      })
+    );
     this.subscri.push(
       this.basic.MessageSubject.pipe(
         filter((a) =>
@@ -57,9 +69,11 @@ export class ChattingComponent implements OnInit, OnDestroy {
         this.notification_obse.next(m.notification);
       })
     );
-    this.subscri.push(this.TypingSubject.pipe(debounceTime(500)).subscribe(()=>{
-      this.basic.conn.emit('noti',this.active_chatid,' Typing...')
-    }))
+    this.subscri.push(
+      this.TypingSubject.pipe(debounceTime(500)).subscribe(() => {
+        this.basic.conn.emit('noti', this.active_chatid, ' Typing...');
+      })
+    );
   }
   ngOnDestroy(): void {
     this.subscri.forEach((a) => a.unsubscribe());
@@ -67,8 +81,17 @@ export class ChattingComponent implements OnInit, OnDestroy {
   AfterChatIdRecived(id: string) {
     this.active_chatid = id;
     this.active = true;
+    this.basic
+      .GetOnce<{
+        chat_id: string;
+        status: number;
+      }>('chat_status', id)
+      .then((a) => {
+        console.log(a);
+        
+        this.chat_status = a.status;
+      });
     this.basic.GetOnce<any>('chat_hist', id).then((a) => {
-      console.log(a.hist);
       this.chat_history = a.hist;
       this.chat_history.sort((a, b) => a.cha_created_at - b.cha_created_at);
     });
@@ -79,6 +102,34 @@ export class ChattingComponent implements OnInit, OnDestroy {
   }
   MsgChange() {
     this.TypingSubject.next();
+  }
+  async finishChat() {
+    const a = await VanillaService.swal.fire({
+      icon: 'question',
+      text: 'Sure Want To Finish Chat??',
+      showCancelButton: true,
+    });
+    if (!a.isConfirmed) {
+      return;
+    }
+    this.basic.conn.emit(
+      'change_status',
+      ChatStatus.finished,
+      this.active_chatid
+    );
+    if (this.basic.user_type === 'agent') {
+      setTimeout(() => {
+        this.basic.conn.emit('act_history');
+      }, 2000);
+    }
+  }
+  TalkToAgent() {
+    this.basic.conn.emit('change_status', ChatStatus.with_agent, {
+      cat_id: 1,
+    });
+  }
+  TalkToBot() {
+    this.basic.conn.emit('change_status', ChatStatus.with_bot);
   }
   // constructor(){}
 }

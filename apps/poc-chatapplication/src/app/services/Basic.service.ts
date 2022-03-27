@@ -4,6 +4,15 @@ import { environment } from '../../environments/environment';
 import { VanillaService } from './Vanilla.service';
 import { ChatAgentMap, ChatSessions, ChatMessageHistory } from './interface';
 import { BehaviorSubject, Subject } from 'rxjs';
+
+export const ChatStatus = {
+  active: 1,
+  inactive: 0,
+  with_bot: 2,
+  with_agent: -1,
+  finished: -2,
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -13,6 +22,10 @@ export class BasicService {
   private _user_name_user = '';
   private _user_id = '';
   private _session_id = '';
+  ChatIdStatusSubject = new Subject<{
+    chat_id: string;
+    status: number;
+  }>();
   SessionIdSubject = new BehaviorSubject('');
   user_type = '';
   ChatHistoryHeader = new BehaviorSubject<
@@ -96,17 +109,42 @@ export class BasicService {
         .on('session_id', (a) => {
           this.session_id = a;
         })
-        .onAny(console.log)
+        // .onAny(console.log)
         .on('uid', (a) => {
           this.user_id = a;
         })
         .on('connect_error', (err: any) => {
+          console.log(err.message);
+          if(err.message !== 'not authorized'){
+            return;
+          }
           this.vanilla.LoaderSubject.next(false);
           rej(true);
           this.user_name = this.password = null;
           this.user_name_user = '';
           this.conn.close();
           this.conn.disconnect();
+        })
+        .on('chat_status', (a) => this.ChatIdStatusSubject.next(a))
+        .on('user_req', (aaa: { req_id: string }) => {
+          VanillaService.swal
+            .fire({
+              icon: 'question',
+              title: 'Incoming Request',
+              text: 'User Want To Connect To You',
+              cancelButtonText: 'Reject',
+              allowOutsideClick: false,
+              confirmButtonText: 'Accept',
+              showCancelButton: true,
+            })
+            .then((swal_respo) => {
+              this.conn.emit('respo', {
+                req_id: aaa.req_id,
+                data: {
+                  accept: swal_respo.isConfirmed ? true : false,
+                },
+              });
+            });
         })
         .on(
           'act_history',

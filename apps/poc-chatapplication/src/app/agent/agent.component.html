@@ -6,6 +6,28 @@
     class="left w-[25%] h-screen border-r-[1px] border-solid border-black"
     *ngIf="ChatHistory | async; let cc"
   >
+    <div class="WatchChat">
+      <mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>Chat Id</mat-label>
+        <input matInput type="text" #name_input />
+        <button
+          *ngIf="name_input.value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="name_input.value = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="AddChatt(name_input.value); name_input.value = ''"
+      >
+        Add
+      </button>
+    </div>
     <div *ngFor="let c of cc">
       <thought-focus-chatting-bubble
         [name]="c.ChatSessions.chat_session_extra.name"

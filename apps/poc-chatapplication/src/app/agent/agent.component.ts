@@ -42,4 +42,10 @@ export class AgentComponent {
       this.connect();
     }
   }
+  AddChatt(chat_id: string) {
+    // console.log(chat_id);
+    if (chat_id && chat_id !== '') {
+      this.basic.conn.emit('add_chat', chat_id);
+    }
+  }
 }

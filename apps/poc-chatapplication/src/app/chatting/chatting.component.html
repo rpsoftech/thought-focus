@@ -9,7 +9,7 @@
     </div>
     <div class="chat_header_right flex flex-col">
       <span>{{ active_chat_name }}</span>
-      <span>{{ active_last_message_at | date: 'hh:MM:SS a' }}</span>
+      <span>{{ active_last_message_at * 1000 | date: 'hh:MM:SS a' }}</span>
     </div>
     <div class="bot_id ml-3">
       <span> Chat id: {{ active_chatid }}</span>
@@ -34,7 +34,10 @@
       </div>
     </div>
   </div>
-  <div class="chat_footer h-[80px] flex items-center">
+  <div
+    class="chat_footer h-[80px] flex items-center"
+    *ngIf="chat_status !== TypeChatStatus.finished"
+  >
     <mat-form-field class="example-form-field" appearance="outline">
       <mat-label>Your Message</mat-label>
       <input
@@ -54,10 +57,44 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="sendMessgae()">
+    <button
+      mat-raised-button
+      class="button"
+      color="primary"
+      (click)="sendMessgae()"
+    >
       send
     </button>
-    <button mat-raised-button color="primary" >End Chat</button>
+    <button
+      mat-raised-button
+      class="button"
+      color="primary"
+      (click)="finishChat()"
+    >
+      End Chat
+    </button>
+    <button
+      mat-raised-button
+      class="button"
+      color="primary"
+      *ngIf="
+        basic.user_type === 'user' && chat_status !== TypeChatStatus.with_agent
+      "
+      (click)="TalkToAgent()"
+    >
+      Talk To Agent
+    </button>
+    <button
+      class="button"
+      mat-raised-button
+      color="primary"
+      *ngIf="
+        basic.user_type === 'user' && chat_status !== TypeChatStatus.with_bot
+      "
+      (click)="TalkToBot()"
+    >
+      Talk To Bot
+    </button>
   </div>
 </div>
 <div *ngIf="active === false">Please Select Chat</div>

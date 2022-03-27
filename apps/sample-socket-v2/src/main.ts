@@ -1,13 +1,29 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DbPrisma, server } from './app/Database';
-import { AgentAuth, UserAuth, ChatStatus } from './app/Interface';
+import {
+  DbPrisma,
+  server,
+  RoomStatus,
+  agentsConnectionArray,
+} from './app/Database';
+import {
+  AgentAuth,
+  UserAuth,
+  ChatStatus,
+  GetTimeStamp,
+  RequestSubject,
+} from './app/Interface';
 import { v4 as uuidv4 } from 'uuid';
-import { ChatMessageHistory_chm_type } from '@prisma/client';
 import { Socket } from 'socket.io';
 import { RequestToBot } from './app/BotChat';
-const RoomStatus: {
-  [room_id: string]: number;
-} = {};
+import {
+  AssignWithSkillAndCal,
+  GetAgentChatHistoryHeader,
+  ChangeChatStatus,
+  AddMessageToChat,
+  SearchChatAndAssignToAgent,
+  AssignChangeToAgent,
+} from './app/GeneralFunctiion';
+
 const port = process.env['PORT'] || 3101;
 server.listen(+port);
 
@@ -81,7 +97,7 @@ server.of('user').use(async (s, n) => {
     user.session_id = session_id;
   }
   if (
-    typeof a.ChatSessions === 'undefined' ||
+    a.ChatSessions === null ||
     typeof a.ChatSessions.chat_session_extra === 'undefined' ||
     typeof (a.ChatSessions.chat_session_extra as any).bot_id === 'undefined'
   ) {
@@ -99,14 +115,21 @@ server.of('user').use(async (s, n) => {
         chat_session_uniq_id: user.session_id,
       },
     });
-    AddMessageToChat(user.session_id, user.user_name_user, 'U', 'Hello', {});
     AddMessageToChat(
       user.session_id,
-      'Bot',
-      'B',
-      res.response.EN.text[0],
-      res.response
-    );
+      user.user_name_user,
+      'U',
+      'Hello',
+      {}
+    ).then(() => {
+      AddMessageToChat(
+        user.session_id,
+        'Bot',
+        'B',
+        res.response.EN.text[0],
+        res.response
+      );
+    });
     RoomStatus[user.session_id] = ChatStatus.with_bot;
   } else {
     RoomStatus[user.session_id] = a.ChatSessions.chat_session_status;
@@ -132,15 +155,15 @@ server.of('agent').use(async (s, n) => {
       },
     });
     if (a === null) {
-      console.log(a);
       const err: any = new Error('not authorized');
       err.data = { content: 'Please retry later' };
       n(err);
       return;
     }
-    console.log(s.id);
     agent = Object.assign(agent, a);
     s.handshake.auth = agent;
+    s.join(`agent${a.agent_id}`);
+    agentsConnectionArray[a.agent_id] = s;
     n();
   } else {
     const err: any = new Error('not authorized');
@@ -165,6 +188,34 @@ server.of('user').on('connect', async (s) => {
       hist: chat_data,
     });
   });
+  s.on('chat_status', (chat_id: string) => {
+    if (user.session_id !== chat_id) {
+      return;
+    }
+    s.emit('chat_status', {
+      chat_id: chat_id,
+      status: RoomStatus[user.session_id],
+    });
+  });
+  s.on('change_status', (status: number, extra: any) => {
+    ChangeChatStatus(user.session_id, status);
+    if (status === ChatStatus.finished) {
+      DbPrisma.userChatSessionMap.update({
+        data: {
+          ucsm_session_id: null,
+        },
+        where: {
+          ucsm_id: user.uid,
+        },
+      });
+    }
+    if (status === ChatStatus.with_agent) {
+      extra = Object.assign(extra, {
+        session_id: user.session_id,
+      });
+      AssignWithSkillAndCal(extra);
+    }
+  });
   s.on('emit_chat_id', (chat_id: string, message: string) => {
     if (user.session_id !== chat_id) {
       return;
@@ -188,20 +239,18 @@ server.of('agent').on('disconnect', (s) => {
 });
 server.of('agent').on('connect', async (s) => {
   const agent: AgentAuth = s.handshake.auth as any;
-  DbPrisma.agentStatus.upsert({
-    where: {
-      agent_status_id: agent.agent_id,
-    },
-    create: {
-      agent_availability: 1,
-      agent_capacity: 3,
-      agent_current_capacity: 3,
-      agent_status_id: agent.agent_id,
-    },
-    update: {
-      agent_availability: 1,
-    },
-  });
+  DbPrisma.agentStatus
+    .update({
+      where: {
+        agent_status_id: agent.agent_id,
+      },
+      data: {
+        agent_availability: 1,
+      },
+    })
+    .then(() => {
+      SearchChatAndAssignToAgent(agent.agent_id);
+    });
   GetAgentChatHistoryHeader(agent.agent_id, ChatStatus.active).then((a) => {
     a.forEach((c) => {
       s.join(c.ChatSessions.chat_session_uniq_id);
@@ -227,6 +276,29 @@ server.of('agent').on('connect', async (s) => {
       await GetAgentChatHistoryHeader(agent.agent_id, ChatStatus.active)
     );
   });
+  s.on('chat_status', (chat_id: string) => {
+    s.emit('chat_status', {
+      chat_id: chat_id,
+      status: RoomStatus[chat_id],
+    });
+  });
+  s.on('add_chat', (chat_id: string) => {
+    DbPrisma.chatSessions
+      .findMany({
+        where: {
+          chat_session_uniq_id: chat_id,
+          NOT: {
+            chat_session_status: ChatStatus.finished,
+          },
+        },
+      })
+      .then((a) => {
+        if (a.length === 0) {
+          return;
+        }
+        AssignChangeToAgent(agent.agent_id, chat_id,false);
+      });
+  });
   s.on('disconnect', () => {
     DbPrisma.agentStatus.update({
       where: {
@@ -238,9 +310,36 @@ server.of('agent').on('connect', async (s) => {
       },
     });
   });
+  s.on('change_status', (status: number, chat_id: string) => {
+    if (status === ChatStatus.finished) {
+      ChangeChatStatus(chat_id, ChatStatus.finished, true, agent.agent_id);
+      AddMessageToChat(
+        chat_id,
+        'System',
+        'N',
+        `${agent.agent_name} Left Chat`,
+        {
+          time: GetTimeStamp(),
+        }
+      );
+    }
+  });
   s.on('emit_chat_id', (chat_id: string, message: string) => {
+    if (RoomStatus[chat_id] === ChatStatus.with_bot) {
+      ChangeChatStatus(chat_id, ChatStatus.with_agent);
+      AddMessageToChat(
+        chat_id,
+        'System',
+        'N',
+        `${agent.agent_name} Joined Chat`,
+        {
+          time: GetTimeStamp(),
+        }
+      );
+    }
     AddMessageToChat(chat_id, agent.agent_name, 'A', message, {});
   });
+  s.on('respo', (a) => RequestSubject.next(a));
 });
 async function SendNotification(
   session_id: string,
@@ -259,49 +358,4 @@ async function SendNotification(
       .emit('noti', { session_id, notification });
   }
   so.to(session_id).emit('noti', { session_id, notification });
-}
-async function AddMessageToChat(
-  session_id: string,
-  from: string,
-  chm_type: ChatMessageHistory_chm_type,
-  messgae: string,
-  chat_extra = {}
-) {
-  const msg = await DbPrisma.chatMessageHistory.create({
-    data: {
-      cha_created_at: GetTimeStamp(),
-      chm_extra: chat_extra,
-      chm_from: from,
-      chm_message: messgae,
-      chm_uniq_id: uuidv4(),
-      chm_chat_session_id: session_id,
-      chm_type: chm_type,
-    },
-  });
-  DbPrisma.chatAgentMap.updateMany({
-    data: {
-      cam_edited_on: GetTimeStamp(),
-      cam_last_message: messgae,
-    },
-    where: {
-      cam_chat_session_id: session_id,
-    },
-  });
-  server.of('user').to(session_id).emit('msg', msg);
-  server.of('agent').to(session_id).emit('msg', msg);
-}
-function GetAgentChatHistoryHeader(agent_id: number, with_status?: number) {
-  return DbPrisma.chatAgentMap.findMany({
-    where: {
-      cam_agent_id: agent_id,
-      cam_chat_status: with_status,
-    },
-    include: {
-      ChatSessions: true,
-    },
-  });
-}
-
-function GetTimeStamp() {
-  return Math.floor(Date.now() / 1000);
 }

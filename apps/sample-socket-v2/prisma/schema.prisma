@@ -14,7 +14,7 @@ model Agent {
   agent_password   String             @db.VarChar(60)
   agent_uname      String             @unique(map: "agent_uname") @db.VarChar(30)
   agent_extra      Json
-  agent_created_at BigInt
+  agent_created_at Int
   AgentCatMap      AgentCatMap[]
   AgentSkillSetMap AgentSkillSetMap[]
   AgentStatus      AgentStatus?
@@ -31,6 +31,7 @@ model AgentCat {
   agent_cat_type   AgentCat_agent_cat_type
   agent_created_at BigInt
   AgentCatMap      AgentCatMap[]
+  AgentChatQue     AgentChatQue[]
 
   @@index([agent_cat_type], map: "agent_cat_type")
   @@index([agent_created_at], map: "agent_created_at")
@@ -43,8 +44,8 @@ model AgentCatMap {
   AgentCat                   AgentCat @relation(fields: [agent_cat_map_agent_cat_id], references: [agent_cat_id], onDelete: Cascade, map: "AgentCatMap_ibfk_2")
   Agent                      Agent    @relation(fields: [agent_cat_map_agent_id], references: [agent_id], onDelete: Cascade, map: "AgentCatMap_ibfk_1")
 
+  @@unique([agent_cat_map_agent_id, agent_cat_map_agent_cat_id], map: "agent_cat_map_agent_id")
   @@index([agent_cat_map_agent_cat_id], map: "agent_cat_map_agent_cat_id")
-  @@index([agent_cat_map_agent_id], map: "agent_cat_map_agent_id")
 }
 
 model AgentSkillSetMap {
@@ -63,6 +64,7 @@ model AgentStatus {
   agent_availability     Int
   agent_capacity         Int
   agent_current_capacity Int
+  agent_last_active_on   Int
   Agent                  Agent @relation(fields: [agent_status_id], references: [agent_id], onDelete: Cascade, map: "AgentStatus_ibfk_1")
 
   @@index([agent_availability], map: "agent_availability")
@@ -80,7 +82,7 @@ model ChatAgentMap {
   Agent               Agent        @relation(fields: [cam_agent_id], references: [agent_id], onDelete: Cascade, map: "ChatAgentMap_ibfk_1")
   ChatSessions        ChatSessions @relation(fields: [cam_chat_session_id], references: [chat_session_uniq_id], onDelete: Cascade, map: "ChatAgentMap_ibfk_2")
 
-  @@index([cam_agent_id], map: "cam_agent_id")
+  @@unique([cam_agent_id, cam_chat_session_id], map: "cam_agent_id")
   @@index([cam_chat_session_id], map: "cam_chat_session_id")
   @@index([cam_chat_status], map: "cam_chat_status")
   @@index([cam_edited_on], map: "cam_edited_on")
@@ -108,6 +110,7 @@ model ChatSessions {
   chat_session_uniq_id String               @unique(map: "chat_session_uniq_id") @db.VarChar(40)
   chat_session_status  Int
   chat_session_extra   Json
+  AgentChatQue         AgentChatQue?
   ChatAgentMap         ChatAgentMap[]
   ChatMessageHistory   ChatMessageHistory[]
   UserChatSessionMap   UserChatSessionMap[]
@@ -119,6 +122,7 @@ model SkillSet {
   skill_id         Int                 @id @default(autoincrement())
   skill_name       String              @unique(map: "skill_name") @db.VarChar(30)
   skill_type       SkillSet_skill_type @default(A)
+  AgentChatQue     AgentChatQue[]
   AgentSkillSetMap AgentSkillSetMap[]
 
   @@index([skill_type], map: "skill_type")
@@ -130,6 +134,20 @@ model UserChatSessionMap {
   ChatSessions    ChatSessions? @relation(fields: [ucsm_session_id], references: [chat_session_id], map: "UserChatSessionMap_ibfk_1")
 
   @@index([ucsm_session_id], map: "UserChatSessionMap_ibfk_1")
+}
+
+model AgentChatQue {
+  que_id                          Int          @id @default(autoincrement())
+  ChatSession_id                  String       @unique(map: "ChatSession_id") @db.VarChar(40)
+  AgentCat                        Int?
+  AgentSkill                      Int?
+  created_at                      Int?
+  AgentCat_AgentCatToAgentChatQue AgentCat?    @relation(fields: [AgentCat], references: [agent_cat_id], onDelete: Cascade, map: "AgentChatQue_ibfk_2")
+  SkillSet                        SkillSet?    @relation(fields: [AgentSkill], references: [skill_id], onDelete: Cascade, map: "AgentChatQue_ibfk_3")
+  ChatSessions                    ChatSessions @relation(fields: [ChatSession_id], references: [chat_session_uniq_id], onDelete: Cascade, map: "AgentChatQue_ibfk_1")
+
+  @@index([AgentCat], map: "AgentCat")
+  @@index([AgentSkill], map: "AgentChatQue_ibfk_3")
 }
 
 enum AgentCat_agent_cat_type {

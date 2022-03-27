@@ -4,7 +4,11 @@ import { Server, Socket } from 'socket.io';
 
 export const DbPrisma = new PrismaClient();
 
-export const agents: {
+export const RoomStatus: {
+  [room_id: string]: number;
+} = {};
+
+export const agentsConnectionArray: {
   [agent_id: string]: Socket;
 } = {};
 export const BotIds: {
