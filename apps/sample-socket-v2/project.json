@@ -10,12 +10,13 @@
         "outputPath": "dist/apps/sample-socket-v2",
         "main": "apps/sample-socket-v2/src/main.ts",
         "tsConfig": "apps/sample-socket-v2/tsconfig.app.json",
-        "assets": ["apps/sample-socket-v2/src/assets"]
+        "assets": ["apps/sample-socket-v2/src/assets","apps/sample-socket-v2/src/prisma"]
       },
       "configurations": {
         "production": {
           "optimization": true,
-          "extractLicenses": true,
+          "extractLicenses": false,
+          "externalDependencies": ["@prisma/client"],
           "inspect": false,
           "fileReplacements": [
             {
