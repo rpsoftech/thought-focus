@@ -297,6 +297,7 @@ export async function ChangeChatStatus(
     const aaa = agets.map((a) => {
       DbPrisma.agentStatus.update({
         data: {
+          agent_last_active_on:GetTimeStamp(),
           agent_current_capacity: {
             increment: 1,
           },
@@ -307,13 +308,6 @@ export async function ChangeChatStatus(
       });
     });
     p.concat(aaa as any);
-    DbPrisma.agentStatus.updateMany({
-      data: {
-        agent_current_capacity: {
-          increment: 1,
-        },
-      },
-    });
     p.push(
       DbPrisma.chatAgentMap.updateMany({
         data: {

@@ -296,7 +296,7 @@ server.of('agent').on('connect', async (s) => {
         if (a.length === 0) {
           return;
         }
-        AssignChangeToAgent(agent.agent_id, chat_id,false);
+        AssignChangeToAgent(agent.agent_id, chat_id, false);
       });
   });
   s.on('disconnect', () => {

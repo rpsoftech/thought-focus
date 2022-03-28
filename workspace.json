@@ -2,7 +2,6 @@
   "version": 2,
   "projects": {
     "poc-chatapplication": "apps/poc-chatapplication",
-    "sample-socket-v2": "apps/sample-socket-v2",
-    "simple-socketio": "apps/simple-socketio"
+    "sample-socket-v2": "apps/sample-socket-v2"
   }
 }
