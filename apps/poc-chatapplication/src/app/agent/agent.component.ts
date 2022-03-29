@@ -18,9 +18,11 @@ export class AgentComponent {
       ChatSessions: ChatSessions;
     })[]
   >;
+  ChatWatching!: Observable<ChatSessions[]>;
   constructor(private basic: BasicService, private vanilla: VanillaService) {
     basic.user_type = 'agent';
     this.ChatHistory = basic.ChatHistoryHeader.asObservable();
+    this.ChatWatching = basic.ChatWatchingHeades.asObservable();
     if (basic.user_name !== null && basic.password !== null) this.connect();
     else this.show_user_password = true;
   }

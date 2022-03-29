@@ -11,6 +11,7 @@ import {
   ChatStatus,
   GetTimeStamp,
   RequestSubject,
+  QueryBuilder,
 } from './app/Interface';
 import { v4 as uuidv4 } from 'uuid';
 import { Socket } from 'socket.io';
@@ -130,6 +131,9 @@ server.of('user').use(async (s, n) => {
         res.response
       );
     });
+    server
+      .of('agent')
+      .emit('bot_session', user.session_id, user.user_name_user);
     RoomStatus[user.session_id] = ChatStatus.with_bot;
   } else {
     RoomStatus[user.session_id] = a.ChatSessions.chat_session_status;
@@ -248,7 +252,9 @@ server.of('agent').on('connect', async (s) => {
         agent_availability: 1,
       },
     })
-    .then(() => {
+    .then((a) => {
+      // console.log(a);
+
       SearchChatAndAssignToAgent(agent.agent_id);
     });
   GetAgentChatHistoryHeader(agent.agent_id, ChatStatus.active).then((a) => {
@@ -266,6 +272,23 @@ server.of('agent').on('connect', async (s) => {
       session_id: c,
       hist: chat_data,
     });
+  });
+
+  s.on('get_bot_sessions', async () => {
+    s.emit(
+      'get_bot_sessions',
+      await DbPrisma.$queryRawUnsafe(
+        await QueryBuilder.from('ChatSessions as cs')
+          .join(
+            'ChatAgentMap as cam',
+            `cs.chat_session_uniq_id = cam.cam_chat_session_id`,
+            'left'
+          )
+          .where('cs.chat_session_status', ChatStatus.with_bot)
+          .where('cam.cam_agent_id !=', agent.agent_id)
+          .get()
+      )
+    );
   });
   s.on('noti', (session_id: string, noti: string) => {
     SendNotification(session_id, `${agent.agent_name} is ${noti}`, s, 'user');

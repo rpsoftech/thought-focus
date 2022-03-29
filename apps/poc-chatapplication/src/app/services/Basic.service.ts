@@ -33,6 +33,7 @@ export class BasicService {
       ChatSessions: ChatSessions;
     })[]
   >([]);
+  ChatWatchingHeades = new BehaviorSubject<ChatSessions[]>([]);
   ChatHistoryId: {
     [id: string]: ChatAgentMap & {
       ChatSessions: ChatSessions;
@@ -109,13 +110,16 @@ export class BasicService {
         .on('session_id', (a) => {
           this.session_id = a;
         })
+        .on('get_bot_sessions', (a) => {
+          this.ChatWatchingHeades.next(a);
+        })
         // .onAny(console.log)
         .on('uid', (a) => {
           this.user_id = a;
         })
         .on('connect_error', (err: any) => {
           console.log(err.message);
-          if(err.message !== 'not authorized'){
+          if (err.message !== 'not authorized') {
             return;
           }
           this.vanilla.LoaderSubject.next(false);
@@ -146,6 +150,25 @@ export class BasicService {
               });
             });
         })
+        .on('bot_session', (id: string, name: string) => {
+          console.log(id, name);
+          if (
+            this.ChatHistoryHeader.value.some(
+              (a) => a.ChatSessions.chat_session_uniq_id === id
+            ) === false
+          ) {
+            const a = this.ChatWatchingHeades.value;
+            a.push({
+              chat_session_extra: {
+                name: name,
+              },
+              chat_session_status: 2,
+              chat_session_uniq_id: id,
+              chat_session_id: 1,
+            });
+            this.ChatWatchingHeades.next(a);
+          }
+        })
         .on(
           'act_history',
           (
@@ -169,6 +192,9 @@ export class BasicService {
             a.chm_message
           );
         });
+      if (this.user_type === 'agent') {
+        this.conn.emit('get_bot_sessions');
+      }
     });
   }
   GetOnce<T>(event: string, ...data: any) {
@@ -196,6 +222,13 @@ export class BasicService {
     });
     a.sort((a, b) => a.cam_edited_on - b.cam_edited_on);
     this.ChatHistoryHeader.next(a);
+    if (typeof this.ChatHistoryId[session_id] === 'undefined') {
+      this.ChatHistoryId[session_id] = {
+        ChatSessions: {
+          chat_session_uniq_id: session_id,
+        },
+      } as any;
+    }
     this.ChatHistoryId[session_id].cam_edited_on = time;
     this.ChatHistoryId[session_id].cam_last_message = last_message;
   }

@@ -9,7 +9,7 @@
     </div>
     <div class="chat_header_right flex flex-col">
       <span>{{ active_chat_name }}</span>
-      <span>{{ active_last_message_at * 1000 | date: 'hh:MM:SS a' }}</span>
+      <span>{{ active_last_message_at * 1000 | date: 'hh:mm:ss a' }}</span>
     </div>
     <div class="bot_id ml-3">
       <span> Chat id: {{ active_chatid }}</span>
@@ -30,7 +30,7 @@
       >
       <div class="msg_body flex-auto">{{ m.chm_message }}</div>
       <div class="time">
-        {{ m.cha_created_at * 1000 | date: 'hh:MM:SS a' }}
+        {{ (m.cha_created_at * 1000) | date: 'hh:mm:ss a' }}
       </div>
     </div>
   </div>

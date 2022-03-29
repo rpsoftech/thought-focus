@@ -67,7 +67,7 @@ export async function AssignWithSkillAndCal(req: {
     const agent_id = agnetsLisr[0].agent_id;
     const reqid = uuidv4();
 
-    agentsConnectionArray[agent_id].emit('user_req', {
+    server.of('agent').to(`agent${agent_id}`).emit('user_req', {
       req_id: reqid,
     });
     firstValueFrom(
@@ -229,6 +229,7 @@ export async function AssignChangeToAgent(
   p.push(
     DbPrisma.agentStatus.update({
       data: {
+        agent_last_active_on: GetTimeStamp(),
         agent_current_capacity: {
           decrement: 1,
         },
@@ -297,7 +298,7 @@ export async function ChangeChatStatus(
     const aaa = agets.map((a) => {
       DbPrisma.agentStatus.update({
         data: {
-          agent_last_active_on:GetTimeStamp(),
+          agent_last_active_on: GetTimeStamp(),
           agent_current_capacity: {
             increment: 1,
           },
@@ -338,6 +339,7 @@ export async function ChangeChatStatus(
       AddMessageToChat(chat_id, 'System', 'N', 'Bot Joined Chat', {
         time: GetTimeStamp(),
       });
+      server.of('agent').emit('bot_session', chat_id, 'Anno');
     }
   }
   await Promise.all(p);

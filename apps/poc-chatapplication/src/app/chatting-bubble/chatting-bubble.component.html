@@ -11,4 +11,12 @@
     <div class="name">{{ name }}</div>
     <!-- <div class="lastmessage">{{ last_message }}</div> -->
   </div>
+  <button
+    *ngIf="callback_button"
+    (click)="$event.stopPropagation(); Callback.emit()"
+    mat-raised-button
+    color="primary"
+  >
+    Join
+  </button>
 </div>

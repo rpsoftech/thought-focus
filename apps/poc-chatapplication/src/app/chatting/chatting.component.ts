@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import {
   BehaviorSubject,
   debounceTime,
@@ -87,8 +87,6 @@ export class ChattingComponent implements OnInit, OnDestroy {
         status: number;
       }>('chat_status', id)
       .then((a) => {
-        console.log(a);
-        
         this.chat_status = a.status;
       });
     this.basic.GetOnce<any>('chat_hist', id).then((a) => {

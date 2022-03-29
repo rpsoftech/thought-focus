@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'thought-focus-chatting-bubble',
@@ -6,9 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./chatting-bubble.component.scss'],
 })
 export class ChattingBubbleComponent {
-  @Input() name = 'Keyur';
+  @Input() name = '';
+  @Input() callback_button = false;
   // @Input() last_message = 'sugdyagdvuhijosfhugdvahbioKPDJISHUGVAHIOJDOHUGVJIJOISFDAHUIHHWUOIFDJIHIHSIFAJNWOK';
   @Input() is_readed = true;
+  @Output() Callback = new EventEmitter();
   onElementClick() {
     this.is_readed = true;
   }

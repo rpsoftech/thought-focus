@@ -6,8 +6,26 @@
     class="left w-[25%] h-screen border-r-[1px] border-solid border-black"
     *ngIf="ChatHistory | async; let cc"
   >
-    <div class="WatchChat">
-      <mat-form-field class="example-form-field" appearance="outline">
+    <div class="h-1/2">
+      <h3 class="">Your Bot Chat</h3>
+
+      <div class="h-1/2" *ngFor="let c of cc">
+        <thought-focus-chatting-bubble
+          [name]="c.ChatSessions.chat_session_extra.name"
+          (click)="ChatIdSubject.next(c.ChatSessions.chat_session_uniq_id)"
+        ></thought-focus-chatting-bubble>
+      </div>
+    </div>
+    <div class="WatchChat text-center h-1/2 border-t">
+      <h3 class="">Active Bot Chat</h3>
+      <div *ngFor="let c of ChatWatching | async">
+        <thought-focus-chatting-bubble
+          [name]="c.chat_session_extra.name"
+          [callback_button]="true"
+          (Callback)="AddChatt(c.chat_session_uniq_id)"
+        ></thought-focus-chatting-bubble>
+      </div>
+      <!-- <mat-form-field class="example-form-field" appearance="outline">
         <mat-label>Chat Id</mat-label>
         <input matInput type="text" #name_input />
         <button
@@ -26,15 +44,10 @@
         (click)="AddChatt(name_input.value); name_input.value = ''"
       >
         Add
-      </button>
-    </div>
-    <div *ngFor="let c of cc">
-      <thought-focus-chatting-bubble
-        [name]="c.ChatSessions.chat_session_extra.name"
-        (click)="ChatIdSubject.next(c.ChatSessions.chat_session_uniq_id)"
-      ></thought-focus-chatting-bubble>
+      </button> -->
     </div>
   </div>
+
   <div class="right relative flex w-[75%] flex-col h-screen">
     <thought-focus-chatting [chatid]="ChatIdSubject"></thought-focus-chatting>
   </div>
