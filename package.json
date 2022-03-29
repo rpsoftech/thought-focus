@@ -31,6 +31,7 @@
     "compression": "^1.7.4",
     "express": "^4.15.2",
     "jsonwebtoken": "^8.5.1",
+    "query-builder-mysql": "^3.0.4",
     "rxjs": "~7.4.0",
     "socket.io": "^4.4.1",
     "socket.io-client": "^4.4.1",
