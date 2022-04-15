@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -20,7 +20,7 @@ model Agent {
   AgentStatus      AgentStatus?
   ChatAgentMap     ChatAgentMap[]
 
-  @@index([agent_created_at], map: "agent_created_at")
+  @@index([agent_created_at], map: "fields: [agent_created_at]")
   @@index([agent_name], map: "agent_name")
   @@index([agent_password], map: "agent_password")
 }
