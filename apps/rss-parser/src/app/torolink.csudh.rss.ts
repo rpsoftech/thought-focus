@@ -1,6 +1,10 @@
 import * as ax from 'axios';
 import {
+  DateParser,
   ElasticsearchPushObjectRef,
+  GenerateLangNode,
+  HtmlStringToPlainString,
+  TimeParser,
   torolinkReqHeaders,
   TorolinkRSSResponse,
   TorolinkRSSResponseValue,
@@ -9,7 +13,7 @@ import {
 // Image Path
 // url("https://se-images.campuslabs.com/clink/images/39691ac0-024c-47a4-bbba-67f2cf38c7047d5e164d-b738-44d7-bdc1-8e07bb1c3029.png?preset=med-w")
 export async function GetAllRssFeedsOfTorolink(): Promise<
-  ElasticsearchPushObjectRef[]
+  (ElasticsearchPushObjectRef & { id: string })[]
 > {
   const d = new Date().toISOString().split('.')[0] + '+05:30';
   const first = await ToroLinkReq({
@@ -45,57 +49,51 @@ export async function GetAllRssFeedsOfTorolink(): Promise<
     }
     const EndsOnDateObj = CSUDHToroTimeStampStringTpDateObj(a.endsOn);
     const StartsOnDateObj = CSUDHToroTimeStampStringTpDateObj(a.startsOn);
+    const latlon = {
+      lat: a.latitude && +a.latitude !== 0 ? +a.latitude : null,
+      lon: a.longitude && +a.longitude !== 0 ? +a.longitude : null,
+    };
     return {
+      id:`torocsudh${a.id}`,
       type: 'campus_event_test',
       '@timestamp': isoTimetamp,
       '@version': '1',
       COPIED_FROM: 'torolink.csudh.edu',
-      DESCRIPTION: a.description,
+      DESCRIPTION: HtmlStringToPlainString(a.description),
       EMAIL: '',
-      END_DATE: `${EndsOnDateObj.getUTCFullYear()}-${
-        EndsOnDateObj.getUTCMonth() + 1
-      }-${EndsOnDateObj.getUTCDate()}`,
-      END_TIME: `${EndsOnDateObj.getUTCHours()}:${EndsOnDateObj.getUTCMinutes()}:${EndsOnDateObj.getUTCSeconds()}`,
+      END_DATE: DateParser(EndsOnDateObj),
+      END_TIME: TimeParser(EndsOnDateObj),
       ENTITY_NAME: a.name,
       EXCEPTION_TEXT: '',
-      LAT_LON: {
-        lat:  a.latitude && +a.latitude !== 0 ? +a.latitude : null,
-        lon: a.longitude && +a.longitude !== 0 ? +a.longitude : null,
-      },
+      LAT_LON: latlon.lat === null || latlon.lon === null ? undefined : latlon,
       LOCATION: a.location,
       KEYWORD: keywords.join(','),
-      LANGUAGES: '',
-      REF_URL: '',
+      LANGUAGES: GenerateLangNode(
+        a.name,
+        a.location,
+        StartsOnDateObj,
+        EndsOnDateObj
+      ),
+      REF_URL: `https://torolink.csudh.edu/event/${a.id}`,
       SECONDARY_ENTITY_NAME: '',
-      START_DATE:  `${StartsOnDateObj.getUTCFullYear()}-${
-        StartsOnDateObj.getUTCMonth() + 1
-      }-${StartsOnDateObj.getUTCDate()}`,
-      START_TIME: `${StartsOnDateObj.getUTCHours()}:${StartsOnDateObj.getUTCMinutes()}:${StartsOnDateObj.getUTCSeconds()}`,
+      media: `https://se-images.campuslabs.com/clink/images/${a.imagePath}?preset=med-w`,
+      MEDIA: `https://se-images.campuslabs.com/clink/images/${a.imagePath}?preset=med-w`,
+      START_DATE: DateParser(StartsOnDateObj),
+      START_TIME: TimeParser(StartsOnDateObj),
     };
   });
 }
+
 function CSUDHToroTimeStampStringTpDateObj(date_string: string): Date {
   const StartDateObj = new Date();
   const dateUTC = date_string.split('T')[0].split('-');
   const timeUtc = date_string.split('T')[1].split('+')[0].split(':');
-  StartDateObj.setUTCFullYear(+dateUTC[0], +dateUTC[1], +dateUTC[2]);
+  StartDateObj.setUTCFullYear(+dateUTC[0], +dateUTC[1] - 1, +dateUTC[2]);
   StartDateObj.setUTCHours(+timeUtc[0], +timeUtc[1], +timeUtc[2]);
-  StartDateObj.setUTCHours(StartDateObj.getHours() - 8);
+  StartDateObj.setUTCHours(StartDateObj.getUTCHours() - 8);
   return StartDateObj;
 }
-export function GenerateLangNode(
-  name: string,
-  location: string,
-  start: Date,
-  end: Date
-) {
-  // Open Mic Night event is happening at Loker Student Union on 24th September from 4 PM to 6 PM
-  const str = `${name} event is happening at ${location} on `
-}
-function NumbeToNumberString(numbertoProcess:number){
-  let ext = 'th';
-  const checkNumber = numbertoProcess % 10;
-}
+
 export function ToroLinkReq(queryParams: torolinkReqHeaders) {
   // console.log();
 

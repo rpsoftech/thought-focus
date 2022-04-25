@@ -1,6 +1,8 @@
-const HtmlReplacerRegex = /<[^>]+>/gim;
+const HtmlReplacerRegex = /<[^>]+>/g;
+const BreaklineReplacer = /(?:\r\n|\r|\n)/g;
+const ExtraThingsReplacer = /(&nbsp;)/g;
 export function HtmlStringToPlainString(d: string): string {
-  return d.replace(HtmlReplacerRegex, '');
+  return d.replace(HtmlReplacerRegex, '').replace(BreaklineReplacer,'\n').replace(ExtraThingsReplacer,'');
 }
 export interface torolinkReqHeaders {
   endsAfter: string;
@@ -18,7 +20,20 @@ export interface TorolinkRSSResponse {
   '@search.facets': TorolinkRSSResponseSearchFacets;
   value: TorolinkRSSResponseValue[];
 }
-
+export const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 export interface TorolinkRSSResponseSearchFacets {
   BenefitNames: TorolinkRSSResponseBenefitName[];
   Theme: TorolinkRSSResponseBenefitName[];
@@ -78,6 +93,7 @@ export enum Visibility {
 }
 
 export interface EmsCsudhReqObject {
+  // {startDate :'25/04/2022', displayView : '2', displayFormat : '0', eventTypeIds : '', locationIds : '', sublocationIds : '', departmentIds : '',TZOffset:'0',TZAbbr:'', TZID: '0', keyword : ''}
   startDate: string;
   displayView: string;
   displayFormat: string;
@@ -92,6 +108,7 @@ export interface EmsCsudhReqObject {
 }
 
 export interface EmsRssResponse {
+  d:string;
   listData: EMSRSSResponseListObject[];
   params: EMSRSSRespoParamsObj[];
   specialData: EMSRSSRespoSpecialObject[];
@@ -161,16 +178,16 @@ export interface ElasticsearchPushObjectRef {
   '@version': string;
   COPIED_FROM: string;
   DESCRIPTION: string;
-  EMAIL: string;
+  EMAIL?: string;
   // format: 'yyyy-MM-dd';
   END_DATE: string;
   // format: 'HH:mm:ss';
   END_TIME: string;
   ENTITY_NAME: string;
-  EXCEPTION_TEXT: string;
+  EXCEPTION_TEXT?: string;
   KEYWORD: string;
   LANGUAGES: string;
-  LAT_LON: {
+  LAT_LON?: {
     lat: number | null;
     lon: number | null;
   };
@@ -185,8 +202,7 @@ export interface ElasticsearchPushObjectRef {
   PROCESS_ID?: string;
   // Event Url
   REF_URL: string;
-  // format: 'HH:mm:ss';
-  SECONDARY_ENTITY_NAME: string;
+  SECONDARY_ENTITY_NAME?: string;
   // format: 'yyyy-MM-dd';
   START_DATE: string;
   // format: 'HH:mm:ss';
@@ -229,4 +245,59 @@ export interface ElasticsearchPushObjectRef {
   WEEKEND_START_TIME?: string;
   media?: string;
   type: 'campus_event_test';
+}
+
+export function GenerateLangNode(
+  name: string,
+  location: string,
+  start: Date,
+  end: Date
+) {
+  const sameDate =
+    start.getDate() === end.getDate() &&
+    start.getMonth() === end.getMonth() &&
+    start.getFullYear() === end.getFullYear()
+      ? ''
+      : `${NumbeToNumberString(end.getUTCDate())} ${months[end.getUTCMonth()]}`;
+  // Open Mic Night event is happening at Loker Student Union on 24th September from 4 PM to 6 PM
+  const str = `${name} event is happening at ${location} on ${NumbeToNumberString(
+    start.getUTCDate()
+  )} ${months[start.getUTCMonth()]} from ${TimeToAmPM(
+    start.getUTCHours()
+  )} to ${sameDate} ${TimeToAmPM(end.getUTCHours())}.`;
+  return JSON.stringify({
+    EN: {
+      TEXT: str,
+      VOICE: str,
+      VOICE_ONLY: str,
+    },
+  });
+}
+export function TimeToAmPM(numbertoProcess: number) {
+  return numbertoProcess > 12
+    ? `${numbertoProcess - 12} PM`
+    : `${numbertoProcess - 12} AM`;
+}
+export function NumbeToNumberString(numbertoProcess: number) {
+  let ext = 'th';
+  const checkNumber = numbertoProcess % 10;
+  if (checkNumber === 1) {
+    ext = 'st';
+  } else if (checkNumber === 2) {
+    ext = 'nd';
+  } else if (checkNumber === 3) {
+    ext = 'rd';
+  }
+  return `${numbertoProcess}${ext}`;
+}
+export function TimeParser(dateObje: Date) {
+  return `${dateObje.getUTCHours().toString().padStart(2, '0')}:${dateObje
+    .getUTCMinutes()
+    .toString()
+    .padStart(2, '0')}:${dateObje.getUTCSeconds().toString().padStart(2, '0')}`;
+}
+export function DateParser(dateObje: Date) {
+  return `${dateObje.getUTCFullYear()}-${(dateObje.getUTCMonth() + 1)
+    .toString()
+    .padStart(2, '0')}-${dateObje.getUTCDate().toString().padStart(2, '0')}`;
 }
