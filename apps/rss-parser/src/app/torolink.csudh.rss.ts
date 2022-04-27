@@ -39,7 +39,6 @@ export async function GetAllRssFeedsOfTorolink(): Promise<
       }).then((a) => (result = result.concat(a.value)))
     );
   }
-
   await Promise.all(prommises);
   const isoTimetamp = new Date().toISOString();
   return result.map((a) => {
