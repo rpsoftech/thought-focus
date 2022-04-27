@@ -1,0 +1,898 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fetchind Data From Torolink And Mapping Data 1`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "Open Mic Night for our CSUDH Central American Students: Come Read, or Perform your art.",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "17:00:00",
+  "ENTITY_NAME": "Open Mic Night ",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "La,Casita-,LSU,110",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Open Mic Night  event is happening at La Casita- LSU 110 on 28th April from 3 PM to  5 PM.\\",\\"VOICE\\":\\"Open Mic Night  event is happening at La Casita- LSU 110 on 28th April from 3 PM to  5 PM.\\",\\"VOICE_ONLY\\":\\"Open Mic Night  event is happening at La Casita- LSU 110 on 28th April from 3 PM to  5 PM.\\"}}",
+  "LAT_LON": Object {
+    "lat": 33.86508,
+    "lon": -118.2557,
+  },
+  "LOCATION": "La Casita- LSU 110",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/6bf831d6-7b36-4ecb-8415-7859fe5331d63836364d-0549-48d8-9fc9-ff876b50121f.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/8077391",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "15:00:00",
+  "id": "torocsudh8077391",
+  "media": "https://se-images.campuslabs.com/clink/images/6bf831d6-7b36-4ecb-8415-7859fe5331d63836364d-0549-48d8-9fc9-ff876b50121f.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 2`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "
+
+The Anime Club welcomes all members interested in the Japanese art form of anime. Anime Club is a place for any student who enjoys anime, manga, drawing, games, etc. Students will watch films, play games, and discuss this exciting animation technique.
+
+
+
+
+
+
+",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "17:00:00",
+  "ENTITY_NAME": "Anime Club",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "LSU,Meeting,Room,322",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Anime Club event is happening at LSU Meeting Room 322 on 28th April from 3 PM to  5 PM.\\",\\"VOICE\\":\\"Anime Club event is happening at LSU Meeting Room 322 on 28th April from 3 PM to  5 PM.\\",\\"VOICE_ONLY\\":\\"Anime Club event is happening at LSU Meeting Room 322 on 28th April from 3 PM to  5 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "LSU Meeting Room 322",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/b8bf6167-3c85-4d44-a4af-dfddb5618007f405374d-e5d7-47e3-a9e9-f8d167625151.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/8059111",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "15:00:00",
+  "id": "torocsudh8059111",
+  "media": "https://se-images.campuslabs.com/clink/images/b8bf6167-3c85-4d44-a4af-dfddb5618007f405374d-e5d7-47e3-a9e9-f8d167625151.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 3`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "Hello everyone,
+We would like to welcome you all to our general club meeting! Please be sure to RSVP, so we are able to track your attendance.
+If you have any questions, please be sure to send us a message through Torolink. We look forward to seeing you all there!",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "17:00:00",
+  "ENTITY_NAME": "HUSSA Club Meeting",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Online",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"HUSSA Club Meeting event is happening at Online on 28th April from 4 PM to  5 PM.\\",\\"VOICE\\":\\"HUSSA Club Meeting event is happening at Online on 28th April from 4 PM to  5 PM.\\",\\"VOICE_ONLY\\":\\"HUSSA Club Meeting event is happening at Online on 28th April from 4 PM to  5 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "Online",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/a50d39e0-2098-4c71-ba27-6573a0e499bf4fbfa1df-2db6-49b2-a4b7-fb7e35aa4b03.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/7751178",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "16:00:00",
+  "id": "torocsudh7751178",
+  "media": "https://se-images.campuslabs.com/clink/images/a50d39e0-2098-4c71-ba27-6573a0e499bf4fbfa1df-2db6-49b2-a4b7-fb7e35aa4b03.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 4`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "talk about frat.",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "17:30:00",
+  "ENTITY_NAME": "Brotherhood talk",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "CSUDH",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Brotherhood talk event is happening at CSUDH on 28th April from 4 PM to  5 PM.\\",\\"VOICE\\":\\"Brotherhood talk event is happening at CSUDH on 28th April from 4 PM to  5 PM.\\",\\"VOICE_ONLY\\":\\"Brotherhood talk event is happening at CSUDH on 28th April from 4 PM to  5 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "CSUDH",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/null?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/8053367",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "16:30:00",
+  "id": "torocsudh8053367",
+  "media": "https://se-images.campuslabs.com/clink/images/null?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 5`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "Bring your own graduation cap and join the sisters of Omega Phi Chi Multicultual Sorority, Inc. for a decorating workshop!
+Some supplies will be provided, however, we recommend bringing supplies of your own preference.",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "18:00:00",
+  "ENTITY_NAME": "Graduation Cap Decorating Workshop",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Office,of,Student,Life,-,LSU,121",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Graduation Cap Decorating Workshop event is happening at Office of Student Life - LSU 121 on 28th April from 4 PM to  6 PM.\\",\\"VOICE\\":\\"Graduation Cap Decorating Workshop event is happening at Office of Student Life - LSU 121 on 28th April from 4 PM to  6 PM.\\",\\"VOICE_ONLY\\":\\"Graduation Cap Decorating Workshop event is happening at Office of Student Life - LSU 121 on 28th April from 4 PM to  6 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "Office of Student Life - LSU 121",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/2b2c5fa4-2c10-4ced-9696-7a814847e4bf77c93f97-20d1-4830-9186-f3f0d75b39ba.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/8050951",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "16:30:00",
+  "id": "torocsudh8050951",
+  "media": "https://se-images.campuslabs.com/clink/images/2b2c5fa4-2c10-4ced-9696-7a814847e4bf77c93f97-20d1-4830-9186-f3f0d75b39ba.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 6`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "Toros take back the night! In recognition of Sexual Assault Awareness Month, join us for the Take Back the Night speak out and march to support survivors and take a stand against sexual violence.
+6:30 PM &ndash; Survivor Speak Out*
+7:30 PM &ndash; Campus March Against Sexual Violence
+8:00 PM &ndash; Craftivism &amp; Resource Fair
+*CSUDH students, faculty, staff, and alumni who have experienced sexual violence or abuse are invited to share their story at the speak out forum. It is not necessary to sign up in advance to speak at the forum.
+For more information about Take Back the Night, please contact the Women's Resource Center at womensctr2@csudh.edu.
+Volunteers needed!Sign up here to volunteer.",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "20:00:00",
+  "ENTITY_NAME": "Take Back the Night",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Loker,Student,Union,Palm,Courtyard,Free Food,Free Stuff",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Take Back the Night event is happening at Loker Student Union Palm Courtyard on 28th April from 5 PM to  8 PM.\\",\\"VOICE\\":\\"Take Back the Night event is happening at Loker Student Union Palm Courtyard on 28th April from 5 PM to  8 PM.\\",\\"VOICE_ONLY\\":\\"Take Back the Night event is happening at Loker Student Union Palm Courtyard on 28th April from 5 PM to  8 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "Loker Student Union Palm Courtyard",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/3df27571-b7da-4971-b4f1-d9ef17ae7b3620e3b52f-f00d-43d1-acf7-b7cc7462624e.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/8079596",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "17:30:00",
+  "id": "torocsudh8079596",
+  "media": "https://se-images.campuslabs.com/clink/images/3df27571-b7da-4971-b4f1-d9ef17ae7b3620e3b52f-f00d-43d1-acf7-b7cc7462624e.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 7`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "These meetings will be activity base events. We will be doing a sustainability related activity anything ranging from a waste audit, DIY crafts, and hikes.",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "12:00:00",
+  "ENTITY_NAME": "General Activitty Meeting",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "The,Net,Zero,Center",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"General Activitty Meeting event is happening at The Net Zero Center on 29th April from -3 AM to  0 AM.\\",\\"VOICE\\":\\"General Activitty Meeting event is happening at The Net Zero Center on 29th April from -3 AM to  0 AM.\\",\\"VOICE_ONLY\\":\\"General Activitty Meeting event is happening at The Net Zero Center on 29th April from -3 AM to  0 AM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "The Net Zero Center",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/008edd51-e00e-4b96-839e-dfb5943b6417f8f1a853-2f60-4fcb-b776-45b34560f103.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/7670866",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "09:00:00",
+  "id": "torocsudh7670866",
+  "media": "https://se-images.campuslabs.com/clink/images/008edd51-e00e-4b96-839e-dfb5943b6417f8f1a853-2f60-4fcb-b776-45b34560f103.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 8`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "Join us to continue the discussion of Wellness and the connection with decolonizing your diet.",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "14:00:00",
+  "ENTITY_NAME": "First Gen Toros Presents Decolonizing Your Diet & Connection to Wellness",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Online",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"First Gen Toros Presents Decolonizing Your Diet & Connection to Wellness event is happening at Online on 29th April from 1 PM to  2 PM.\\",\\"VOICE\\":\\"First Gen Toros Presents Decolonizing Your Diet & Connection to Wellness event is happening at Online on 29th April from 1 PM to  2 PM.\\",\\"VOICE_ONLY\\":\\"First Gen Toros Presents Decolonizing Your Diet & Connection to Wellness event is happening at Online on 29th April from 1 PM to  2 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "Online",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/b92ae7b5-37a1-42a6-a107-092e333d52f6ffaf7bfd-7b2d-410b-9f84-f6b30093438e.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/8008411",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "13:00:00",
+  "id": "torocsudh8008411",
+  "media": "https://se-images.campuslabs.com/clink/images/b92ae7b5-37a1-42a6-a107-092e333d52f6ffaf7bfd-7b2d-410b-9f84-f6b30093438e.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 9`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "
+
+The Finance Student Society will be hosting a speaker event on Friday, April 29, at 4:00 pm. Join us and meet Annie Dong who has over 8 years of investment banking experience focused on M&amp;A and capital raising advisory within the Industrials sector. Before joining Guggenheim, she was a VP at Barclays Industrials where she worked in New York and London offices. Over her career, she has executed transactions involving private and publicly traded companies across the industrial technology, capital goods, transportation &amp; logistics, paper &amp; packaging, automotive and aerospace &amp; defense sub-sectors. Come and hear from our guest speaker's experience, as a student, with professional internships and extracurricular activities.
+
+
+
+
+",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "16:00:00",
+  "ENTITY_NAME": "Finance Student Society Meeting",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Online,Credit",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Finance Student Society Meeting event is happening at Online on 29th April from 3 PM to  4 PM.\\",\\"VOICE\\":\\"Finance Student Society Meeting event is happening at Online on 29th April from 3 PM to  4 PM.\\",\\"VOICE_ONLY\\":\\"Finance Student Society Meeting event is happening at Online on 29th April from 3 PM to  4 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "Online",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/null?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/8074666",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "15:00:00",
+  "id": "torocsudh8074666",
+  "media": "https://se-images.campuslabs.com/clink/images/null?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 10`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "We are now taking applications for the Undergraduate Research Award for Spring 2022! This award supports up to $500 for student research-related expenses. Click on the link to get started on your application today! Make sure to submit your completed application to our@csudh.edu by 5pm on April 29th while funds last!
+
+",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "16:00:00",
+  "ENTITY_NAME": "Undergraduate Research Award Spring 2022",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Online",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Undergraduate Research Award Spring 2022 event is happening at Online on 7th February from -2 AM to 29th April 4 PM.\\",\\"VOICE\\":\\"Undergraduate Research Award Spring 2022 event is happening at Online on 7th February from -2 AM to 29th April 4 PM.\\",\\"VOICE_ONLY\\":\\"Undergraduate Research Award Spring 2022 event is happening at Online on 7th February from -2 AM to 29th April 4 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "Online",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/00d726c2-a98d-408e-8ebe-3e3da3751c0cbdb7570a-ad7e-4c08-ae23-197ab14c1eff.pdf?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/7864379",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "10:00:00",
+  "id": "torocsudh7864379",
+  "media": "https://se-images.campuslabs.com/clink/images/00d726c2-a98d-408e-8ebe-3e3da3751c0cbdb7570a-ad7e-4c08-ae23-197ab14c1eff.pdf?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 11`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "Asian &amp; Pacific Islander Graduation CelebrationDate: April 29, 2022Time: 5-7pmLocation: In-person at Loker Student Union ballroomContact: apigc@csudh.edu
+Register here!https://www.csudh.edu/commencement/graduates/special-graduation-celebrations/
+__________________________________________
+The Asian &amp; Pacific Islander Graduation Celebration is an annual graduation event that recognizes our recent graduates and their academic and personal accomplishments as they complete their student careers here at CSUDH. The event features distinguished guest speakers and cultural performances that aim to highlight the CSUDH API, Middle Eastern, and South Asian community and foster a sense of belonging and pride as our graduates make their way into pursuits beyond CSUDH. The ceremony also welcomes the graduates' friends and families who have supported them throughout their years in school and provides a time for members of the campus and community to come out to celebrate, support, and share in the culture and accomplishments of our APIMESA (Asian, Pacific Islander, Middle Eastern, and South Asian) students. The Asian &amp; Pacific Islander Graduation Celebration is open to all students, regardless of ethnicity.
+We look forward to celebrating with you virtually this year as we reflect on the accomplishments of the past, acknowledge the achievements of the present, and envision the triumphs of the future. *Graduates who participated in our past virtual graduations (2020 &amp; 2021) are invited to join us in-person this year!
+Registration information for this year's celebration will be available in March of each year: https://www.csudh.edu/commencement/graduates/special-graduation-celebrations/",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "18:00:00",
+  "ENTITY_NAME": "Asian & Pacific Islander Graduation Celebration",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Loker,Student,Union,Free Food,Free Stuff",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Asian & Pacific Islander Graduation Celebration event is happening at Loker Student Union on 29th April from 4 PM to  6 PM.\\",\\"VOICE\\":\\"Asian & Pacific Islander Graduation Celebration event is happening at Loker Student Union on 29th April from 4 PM to  6 PM.\\",\\"VOICE_ONLY\\":\\"Asian & Pacific Islander Graduation Celebration event is happening at Loker Student Union on 29th April from 4 PM to  6 PM.\\"}}",
+  "LAT_LON": Object {
+    "lat": 33.86087,
+    "lon": -118.2549,
+  },
+  "LOCATION": "Loker Student Union",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/947bbd0a-1ac1-43ed-bb39-136ec0e837226ef9e18a-61a6-4be6-94f1-315b58dc7d65.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/7810917",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "16:00:00",
+  "id": "torocsudh7810917",
+  "media": "https://se-images.campuslabs.com/clink/images/947bbd0a-1ac1-43ed-bb39-136ec0e837226ef9e18a-61a6-4be6-94f1-315b58dc7d65.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 12`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "Hello come join Hermanas Unidas for a fun social night.",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "19:00:00",
+  "ENTITY_NAME": "Hermanas Night",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "LSU,326/327",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Hermanas Night event is happening at LSU 326/327 on 29th April from 5 PM to  7 PM.\\",\\"VOICE\\":\\"Hermanas Night event is happening at LSU 326/327 on 29th April from 5 PM to  7 PM.\\",\\"VOICE_ONLY\\":\\"Hermanas Night event is happening at LSU 326/327 on 29th April from 5 PM to  7 PM.\\"}}",
+  "LAT_LON": Object {
+    "lat": 33.86087,
+    "lon": -118.2549,
+  },
+  "LOCATION": "LSU 326/327",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/1a3d9afd-7b2b-410c-9bd4-cbf3bab798cb94be7948-9c84-4649-8471-8d9256df7a73.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/8072414",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "17:00:00",
+  "id": "torocsudh8072414",
+  "media": "https://se-images.campuslabs.com/clink/images/1a3d9afd-7b2b-410c-9bd4-cbf3bab798cb94be7948-9c84-4649-8471-8d9256df7a73.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 13`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "The Mervyn M. Dymally African American Political &amp;Economic Institute will host the 3rd Annual Dymally International Jazz &amp;Arts Festival at CSUDH, located at Dignity Health Sports Park, in the city of Carson, CA. This exciting and wonderful jazz and arts festival will be held on Saturday, April 30, 2022: Doors open at 1:00 pm. If you are interested in supporting this event as a Volunteer, please sign-up to learn more about how you might become involved and receive more information.
+
+Volunteer Sing Up Link:https://torolink.csudh.edu/submitter/form/start/261022",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "21:00:00",
+  "ENTITY_NAME": "3rd Annual Dymally International Jazz & Arts Festival Volunteer Sign-Up",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Dignity,Health,Sports,Park",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"3rd Annual Dymally International Jazz & Arts Festival Volunteer Sign-Up event is happening at Dignity Health Sports Park on 30th April from 0 AM to  9 PM.\\",\\"VOICE\\":\\"3rd Annual Dymally International Jazz & Arts Festival Volunteer Sign-Up event is happening at Dignity Health Sports Park on 30th April from 0 AM to  9 PM.\\",\\"VOICE_ONLY\\":\\"3rd Annual Dymally International Jazz & Arts Festival Volunteer Sign-Up event is happening at Dignity Health Sports Park on 30th April from 0 AM to  9 PM.\\"}}",
+  "LAT_LON": Object {
+    "lat": 33.85898,
+    "lon": -118.25978,
+  },
+  "LOCATION": "Dignity Health Sports Park",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/b6de95e0-da35-4bb6-a5a3-3a762502db51d60835ed-4c90-4d8e-bde7-3f2fcd3bbde9.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/8035560",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "12:00:00",
+  "id": "torocsudh8035560",
+  "media": "https://se-images.campuslabs.com/clink/images/b6de95e0-da35-4bb6-a5a3-3a762502db51d60835ed-4c90-4d8e-bde7-3f2fcd3bbde9.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 14`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "What is RAD?Rape Aggression Defensesystem is a program ofrealistic self-defense tactics and techniques. It is a comprehensive self defense course for women thatbegins with awareness, preventionrisk reduction and avoidance, while progressing on to the basics of hands-on defensive.",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "13:30:00",
+  "ENTITY_NAME": "Women's Self-Defense Course",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "ToroDome,Gym,Free Food",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Women's Self-Defense Course event is happening at ToroDome Gym on 1st May from -3 AM to  1 PM.\\",\\"VOICE\\":\\"Women's Self-Defense Course event is happening at ToroDome Gym on 1st May from -3 AM to  1 PM.\\",\\"VOICE_ONLY\\":\\"Women's Self-Defense Course event is happening at ToroDome Gym on 1st May from -3 AM to  1 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "ToroDome Gym",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/61ed395b-3189-4eea-94a1-51f35a3ed8c2901e5d3d-9879-478b-8a09-3747fd357a74.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/8043828",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "09:00:00",
+  "id": "torocsudh8043828",
+  "media": "https://se-images.campuslabs.com/clink/images/61ed395b-3189-4eea-94a1-51f35a3ed8c2901e5d3d-9879-478b-8a09-3747fd357a74.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 15`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "This talk (re)introduces the Angkor civilization from its formation in the 9th century to its political collapse in the 15th century based on recent archaeological research. Angkor was one of the largest empires to ever rule a large portion of Mainland Southeast Asia. Much is known about its cult of &ldquo;god-king&rdquo;, political successions, great monuments, and religions. This talk uses social sciences approach to re-examine the city of Angkor as a living city by looking at its urban infrastructure (monuments, water management structures, roads, etc.), its associated social aspects, and the people who lived there.",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "13:15:00",
+  "ENTITY_NAME": "Special Archaeology Lecture- Dr. Piphal Heng",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Claudia,Hampton,Lecture,Hall,(Welch,Hall,D165)",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Special Archaeology Lecture- Dr. Piphal Heng event is happening at Claudia Hampton Lecture Hall (Welch Hall D165) on 2nd May from 0 AM to  1 PM.\\",\\"VOICE\\":\\"Special Archaeology Lecture- Dr. Piphal Heng event is happening at Claudia Hampton Lecture Hall (Welch Hall D165) on 2nd May from 0 AM to  1 PM.\\",\\"VOICE_ONLY\\":\\"Special Archaeology Lecture- Dr. Piphal Heng event is happening at Claudia Hampton Lecture Hall (Welch Hall D165) on 2nd May from 0 AM to  1 PM.\\"}}",
+  "LAT_LON": Object {
+    "lat": 33.86087,
+    "lon": -118.2549,
+  },
+  "LOCATION": "Claudia Hampton Lecture Hall (Welch Hall D165)",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/5fcd5b30-27a1-4410-8749-6c1fcb8a34003026841d-baa2-4b75-97b5-1b8662dccbec.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/8076729",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "12:00:00",
+  "id": "torocsudh8076729",
+  "media": "https://se-images.campuslabs.com/clink/images/5fcd5b30-27a1-4410-8749-6c1fcb8a34003026841d-baa2-4b75-97b5-1b8662dccbec.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 16`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "
+Focus: College of Natural &amp; Behavioral Sciences
+
+Every Monday from 2pm-3pm
+
+Advising Dates: Feb. 28th to May 9th La Casita at LCRC in LSU 110
+
+
+",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "14:00:00",
+  "ENTITY_NAME": "ETE Drop-In Sessions with Gloria Gandara",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "LCRC,in,LSU,110",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"ETE Drop-In Sessions with Gloria Gandara event is happening at LCRC in LSU 110 on 2nd May from 1 PM to  2 PM.\\",\\"VOICE\\":\\"ETE Drop-In Sessions with Gloria Gandara event is happening at LCRC in LSU 110 on 2nd May from 1 PM to  2 PM.\\",\\"VOICE_ONLY\\":\\"ETE Drop-In Sessions with Gloria Gandara event is happening at LCRC in LSU 110 on 2nd May from 1 PM to  2 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "LCRC in LSU 110",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/5fe8f2c6-3200-4732-b0d4-3524507b5c9eee895ba4-0a88-4b51-bc66-1d42156b2eea.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/7917827",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "13:00:00",
+  "id": "torocsudh7917827",
+  "media": "https://se-images.campuslabs.com/clink/images/5fe8f2c6-3200-4732-b0d4-3524507b5c9eee895ba4-0a88-4b51-bc66-1d42156b2eea.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 17`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "Thrive is a three-session workshop that will teach you tools to better tolerate feelings of distress, regulate and manage emotions, and become more present in your life experiences. The goal of the workshop is to teach strategies to manage overwhelming emotions.
+For more information or questions, contact the Student Psychological Services via phone(310) 243-3818 or via email psychservices@csudh.edu",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "15:30:00",
+  "ENTITY_NAME": "Thrive",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Online",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Thrive event is happening at Online on 2nd May from 2 PM to  3 PM.\\",\\"VOICE\\":\\"Thrive event is happening at Online on 2nd May from 2 PM to  3 PM.\\",\\"VOICE_ONLY\\":\\"Thrive event is happening at Online on 2nd May from 2 PM to  3 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "Online",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/7e5d4984-ab54-4576-b19d-66240d1aef5942a59e72-442d-414f-8846-9723cce4ecb6.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/7864324",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "14:30:00",
+  "id": "torocsudh7864324",
+  "media": "https://se-images.campuslabs.com/clink/images/7e5d4984-ab54-4576-b19d-66240d1aef5942a59e72-442d-414f-8846-9723cce4ecb6.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 18`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "We are pleased to announce avirtual book talk with the editors of First-Generation Faculty of Color: Reflections on Research, Teaching, and Service. Dr. Tracy Lachica Buenavista, Dr. Dimpal Jain, and Dr. Mar&iacute;a Ledesma will engage in dialogue and offer tangible strategies to support and uplift first-gen faculty of color in and beyond the academy.
+
+The virtual book talk will be onMonday, May 2, 4-5:30pm PST. If you are in the Los Angeles area and would like to watch the book talk with community, La Casita of the Latinx Cultural Center has generously offered to host a live-stream of the event. You can register for both the virtual book talk and live-stream at La Casita at bit.ly/FirstGenFOC. 24 hours before the event, we will close the registration form and send the link to everyone.
+
+Please feel free to share this event with your community! This event is made possible by the Untenured Faculty Organization, Faculty Development Center, and the Chican@ Studies Department at California State University, Dominguez Hills.If there are any questions, please contact Stephanie Cariaga at scariaga@csudh.edu.More info on the book is below.
+
+
+
+
+
+
+
+First-Generation Faculty of Color: Reflections on Research, Teaching, and Serviceis the firstbookto examine the experiences of racially minoritized faculty who were also the first in their families to graduate college in the United States. From contingent to tenured faculty who teach at community college, comprehensive, and research institutions, thebookis a collection of critical narratives that collectively show the diversity of faculty of color, attentive to and beyond race. Thebookis organized into three major parts comprised of chapters in which faculty of color depict how first-generation college student identities continue to inform how minoritized people navigate academe well into their professional careers, and encourage them to reconceptualize research, teaching, and service responsibilities to better consider the families and communities that shaped their lives well before college. Thebookisset to be published by Rutgers University Press by October 2022 and can be pre-ordered here.
+
+
+
+
+
+
+",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "16:30:00",
+  "ENTITY_NAME": "Virtual Book Talk with The Editors of First-Generation Faculty of Color: Reflections on Research, Teaching, and Service",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Online",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Virtual Book Talk with The Editors of First-Generation Faculty of Color: Reflections on Research, Teaching, and Service event is happening at Online on 2nd May from 3 PM to  4 PM.\\",\\"VOICE\\":\\"Virtual Book Talk with The Editors of First-Generation Faculty of Color: Reflections on Research, Teaching, and Service event is happening at Online on 2nd May from 3 PM to  4 PM.\\",\\"VOICE_ONLY\\":\\"Virtual Book Talk with The Editors of First-Generation Faculty of Color: Reflections on Research, Teaching, and Service event is happening at Online on 2nd May from 3 PM to  4 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "Online",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/53101741-aa65-4eaf-89ca-24843a54f2835ea671a3-3fe3-422e-929e-697cab6c4c65.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/8075084",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "15:00:00",
+  "id": "torocsudh8075084",
+  "media": "https://se-images.campuslabs.com/clink/images/53101741-aa65-4eaf-89ca-24843a54f2835ea671a3-3fe3-422e-929e-697cab6c4c65.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 19`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "This weekly group is designed to help students learn ways to harness the powers of mindfulness practices to decrease stress and improve overall quality of life.
+Practicing mindfulness can reduce symptoms of stress, improve sleep quality, alleviate anxiety, sharpen concentration, and even enhance your personal relationships.
+If interested in joining the support group send an email to Dr. Wallace at bwallace@csudh.edu or contact the Student Psychological Services at 310.243.3818
+",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "17:30:00",
+  "ENTITY_NAME": "Mindfulness for Stress Reduction",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Online",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Mindfulness for Stress Reduction event is happening at Online on 2nd May from 4 PM to  5 PM.\\",\\"VOICE\\":\\"Mindfulness for Stress Reduction event is happening at Online on 2nd May from 4 PM to  5 PM.\\",\\"VOICE_ONLY\\":\\"Mindfulness for Stress Reduction event is happening at Online on 2nd May from 4 PM to  5 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "Online",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/fc93df73-33b8-4e57-b466-8ce9885ec4098084f5cf-e1a5-47ea-a235-19bee17efc5d.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/7837593",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "16:30:00",
+  "id": "torocsudh7837593",
+  "media": "https://se-images.campuslabs.com/clink/images/fc93df73-33b8-4e57-b466-8ce9885ec4098084f5cf-e1a5-47ea-a235-19bee17efc5d.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 20`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "Every Weekly Chapter Meeting. Every Monday's. From 8pm-9:30pm. Starting on Jan 24th it will be our first chapter meeting.",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "20:30:00",
+  "ENTITY_NAME": "Omega Delta Phi Chapter Meetings ",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Loker,Student,Union",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Omega Delta Phi Chapter Meetings  event is happening at Loker Student Union on 24th January from 8 PM to 2nd May 8 PM.\\",\\"VOICE\\":\\"Omega Delta Phi Chapter Meetings  event is happening at Loker Student Union on 24th January from 8 PM to 2nd May 8 PM.\\",\\"VOICE_ONLY\\":\\"Omega Delta Phi Chapter Meetings  event is happening at Loker Student Union on 24th January from 8 PM to 2nd May 8 PM.\\"}}",
+  "LAT_LON": Object {
+    "lat": 33.86087,
+    "lon": -118.2549,
+  },
+  "LOCATION": "Loker Student Union",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/04a2310d-50a8-42fc-9086-605b122273f254200b79-b2c2-4274-8c05-75af2d0057d4.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/7669500",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "20:00:00",
+  "id": "torocsudh7669500",
+  "media": "https://se-images.campuslabs.com/clink/images/04a2310d-50a8-42fc-9086-605b122273f254200b79-b2c2-4274-8c05-75af2d0057d4.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 21`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "
+Focus: College of Natural &amp; Behavioral Sciences
+
+Advising Dates: March 1st to May 10th Every Tuesday from 11:30am-12:30pm
+Location: La Casita at LCRC in LSU 110
+
+",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "11:30:00",
+  "ENTITY_NAME": "EtE Drop-In Sessions with Advisor Sheyla Peinder",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "LCRC,in,LSU,110",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"EtE Drop-In Sessions with Advisor Sheyla Peinder event is happening at LCRC in LSU 110 on 3rd May from -2 AM to  -1 AM.\\",\\"VOICE\\":\\"EtE Drop-In Sessions with Advisor Sheyla Peinder event is happening at LCRC in LSU 110 on 3rd May from -2 AM to  -1 AM.\\",\\"VOICE_ONLY\\":\\"EtE Drop-In Sessions with Advisor Sheyla Peinder event is happening at LCRC in LSU 110 on 3rd May from -2 AM to  -1 AM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "LCRC in LSU 110",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/aa078167-a0e7-45f8-a7f5-c8d0b794d18c9e9952fc-ccaa-4264-a0c2-d6dcc2bbfb54.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/7917914",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "10:30:00",
+  "id": "torocsudh7917914",
+  "media": "https://se-images.campuslabs.com/clink/images/aa078167-a0e7-45f8-a7f5-c8d0b794d18c9e9952fc-ccaa-4264-a0c2-d6dcc2bbfb54.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 22`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "Visit the CSUDH Farmers Market on the South Walkway (walkway between the library and the Bookstore) every Tuesday 9am-3pm during the semester for fresh farm produce, prepared foods, crafters, and more! EBT accepted, and Market Match available at the CalFresh booth.",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "14:00:00",
+  "ENTITY_NAME": "CSUDH Farmers Market",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "South,Walkway,(CSUDH)",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"CSUDH Farmers Market event is happening at South Walkway (CSUDH) on 3rd May from -4 AM to  2 PM.\\",\\"VOICE\\":\\"CSUDH Farmers Market event is happening at South Walkway (CSUDH) on 3rd May from -4 AM to  2 PM.\\",\\"VOICE_ONLY\\":\\"CSUDH Farmers Market event is happening at South Walkway (CSUDH) on 3rd May from -4 AM to  2 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "South Walkway (CSUDH)",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/39691ac0-024c-47a4-bbba-67f2cf38c7047d5e164d-b738-44d7-bdc1-8e07bb1c3029.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/7913159",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "08:00:00",
+  "id": "torocsudh7913159",
+  "media": "https://se-images.campuslabs.com/clink/images/39691ac0-024c-47a4-bbba-67f2cf38c7047d5e164d-b738-44d7-bdc1-8e07bb1c3029.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 23`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "
+Join us for the 7th Annual Mental Health Fair on Tuesday, May 3, 2022 from 12PM-4PM in the Sculpture Garden! You can get great tips on how to better manage your mental health and well-being. Students, Staff, and Faculty are welcome to attend this free event.
+",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "15:00:00",
+  "ENTITY_NAME": "Mental Health Fair",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Sculpture,Garden,Free Stuff",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Mental Health Fair event is happening at Sculpture Garden on 3rd May from -1 AM to  3 PM.\\",\\"VOICE\\":\\"Mental Health Fair event is happening at Sculpture Garden on 3rd May from -1 AM to  3 PM.\\",\\"VOICE_ONLY\\":\\"Mental Health Fair event is happening at Sculpture Garden on 3rd May from -1 AM to  3 PM.\\"}}",
+  "LAT_LON": Object {
+    "lat": 33.86087,
+    "lon": -118.2549,
+  },
+  "LOCATION": "Sculpture Garden",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/8747f62d-e720-4eae-a30d-3d31e3d23e427ed27d64-c39d-46be-ae84-9d0ec662c73c.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/8069517",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "11:00:00",
+  "id": "torocsudh8069517",
+  "media": "https://se-images.campuslabs.com/clink/images/8747f62d-e720-4eae-a30d-3d31e3d23e427ed27d64-c39d-46be-ae84-9d0ec662c73c.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 24`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "
+Focus: College of Arts &amp; Humanities, College of Education
+
+Advising dates: March 2nd to May 11th, Every Wednesday from 10:15am-11:15am
+Location: La Casita at LCRC in LSU 110 
+
+
+",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "10:15:00",
+  "ENTITY_NAME": "EtE Drop-In Sessions with Cristina de Dios Rodriguez",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "LCRC,in,LSU,110",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"EtE Drop-In Sessions with Cristina de Dios Rodriguez event is happening at LCRC in LSU 110 on 4th May from -3 AM to  -2 AM.\\",\\"VOICE\\":\\"EtE Drop-In Sessions with Cristina de Dios Rodriguez event is happening at LCRC in LSU 110 on 4th May from -3 AM to  -2 AM.\\",\\"VOICE_ONLY\\":\\"EtE Drop-In Sessions with Cristina de Dios Rodriguez event is happening at LCRC in LSU 110 on 4th May from -3 AM to  -2 AM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "LCRC in LSU 110",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/9e673308-640b-4be8-9671-18f992e58c82f38f873f-4802-44d8-af67-b32cf1f21138.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/7918098",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "09:15:00",
+  "id": "torocsudh7918098",
+  "media": "https://se-images.campuslabs.com/clink/images/9e673308-640b-4be8-9671-18f992e58c82f38f873f-4802-44d8-af67-b32cf1f21138.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 25`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "2022 graduates! Come and join us at the ETE Office to personalize your graduation cap in preparation of commencement!",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "12:00:00",
+  "ENTITY_NAME": "Graduation Cap Decorating",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Welch,Hall,360",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Graduation Cap Decorating event is happening at Welch Hall 360 on 4th May from -2 AM to  0 AM.\\",\\"VOICE\\":\\"Graduation Cap Decorating event is happening at Welch Hall 360 on 4th May from -2 AM to  0 AM.\\",\\"VOICE_ONLY\\":\\"Graduation Cap Decorating event is happening at Welch Hall 360 on 4th May from -2 AM to  0 AM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "Welch Hall 360",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/abfe6250-0240-465d-a74e-aaea90b6ecbb1ebfd805-5991-459d-8bbd-a7b3199e8e89.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/8040912",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "10:00:00",
+  "id": "torocsudh8040912",
+  "media": "https://se-images.campuslabs.com/clink/images/abfe6250-0240-465d-a74e-aaea90b6ecbb1ebfd805-5991-459d-8bbd-a7b3199e8e89.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 26`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "Personal growth is a learning process and experience that doesn't have to be navigated alone. Understanding your identity and who you are is a vital part of your journey as a student.",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "12:00:00",
+  "ENTITY_NAME": "Personal Growth",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "LSU,Free Stuff",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Personal Growth event is happening at LSU on 4th May from -1 AM to  0 AM.\\",\\"VOICE\\":\\"Personal Growth event is happening at LSU on 4th May from -1 AM to  0 AM.\\",\\"VOICE_ONLY\\":\\"Personal Growth event is happening at LSU on 4th May from -1 AM to  0 AM.\\"}}",
+  "LAT_LON": Object {
+    "lat": 33.86087,
+    "lon": -118.2549,
+  },
+  "LOCATION": "LSU",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/b18f2a1c-5006-4fe1-89bf-b0054ba8afd486edcd50-fd4e-48f4-8ff1-762226f7904c.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/7963496",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "11:00:00",
+  "id": "torocsudh7963496",
+  "media": "https://se-images.campuslabs.com/clink/images/b18f2a1c-5006-4fe1-89bf-b0054ba8afd486edcd50-fd4e-48f4-8ff1-762226f7904c.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 27`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "During this workshop, student attendees will be introduced to Negotiating, learn basic negotiating strategies, and discuss special negotiating scenarios. 
+This workshop is for SSS participants ONLY.If you are interested in joining the SSS Program, please visit our SSS webpage atcsuhttps://www.csudh.edu/sss/apply-here/
+",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "14:00:00",
+  "ENTITY_NAME": "Negotiating Strategies: For Beginners",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Online,Credit",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Negotiating Strategies: For Beginners event is happening at Online on 4th May from 1 PM to  2 PM.\\",\\"VOICE\\":\\"Negotiating Strategies: For Beginners event is happening at Online on 4th May from 1 PM to  2 PM.\\",\\"VOICE_ONLY\\":\\"Negotiating Strategies: For Beginners event is happening at Online on 4th May from 1 PM to  2 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "Online",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/32aa8eb9-0fec-4edf-9c48-45d9aec9e3959b0cd02b-db5c-46e6-b72f-2b967f348fe8.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/7917303",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "13:00:00",
+  "id": "torocsudh7917303",
+  "media": "https://se-images.campuslabs.com/clink/images/32aa8eb9-0fec-4edf-9c48-45d9aec9e3959b0cd02b-db5c-46e6-b72f-2b967f348fe8.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 28`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "Hot Cheetos with cheese and Horchata drinks on the side.",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "15:00:00",
+  "ENTITY_NAME": "Hot Cheetos Fundraiser ",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "Eastwalk,Way",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"Hot Cheetos Fundraiser  event is happening at Eastwalk Way on 4th May from -1 AM to  3 PM.\\",\\"VOICE\\":\\"Hot Cheetos Fundraiser  event is happening at Eastwalk Way on 4th May from -1 AM to  3 PM.\\",\\"VOICE_ONLY\\":\\"Hot Cheetos Fundraiser  event is happening at Eastwalk Way on 4th May from -1 AM to  3 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "Eastwalk Way",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/null?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/8078525",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "11:00:00",
+  "id": "torocsudh8078525",
+  "media": "https://se-images.campuslabs.com/clink/images/null?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 29`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "TRIBE aims to provide a space for self-identified Black men to voice their experiences, explore their identities, and empower them to make positive lifestyle changes. Topics covered group may include, but are not limited to: academic difficulties, race-related stress (microaggressions &amp; racism), substance use, anger, relationships, family stressors, adjusting to college, and masculinity.
+
+This group is facilitated by Markease Harris (BRC Student Assistant).
+For more information, please email:mharris144@toromail.csudh.edu.
+
+We also have a Zoom session ID:840 4227 7385.",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "17:00:00",
+  "ENTITY_NAME": "TRIBE ",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "LSU,130",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"TRIBE  event is happening at LSU 130 on 4th May from 3 PM to  5 PM.\\",\\"VOICE\\":\\"TRIBE  event is happening at LSU 130 on 4th May from 3 PM to  5 PM.\\",\\"VOICE_ONLY\\":\\"TRIBE  event is happening at LSU 130 on 4th May from 3 PM to  5 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "LSU 130",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/46fb5ded-e2cf-4b69-bbba-a5c9117846905a9020a2-5805-4e5b-b7c1-e8a58702141b.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/7951334",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "15:00:00",
+  "id": "torocsudh7951334",
+  "media": "https://se-images.campuslabs.com/clink/images/46fb5ded-e2cf-4b69-bbba-a5c9117846905a9020a2-5805-4e5b-b7c1-e8a58702141b.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;
+
+exports[`Fetchind Data From Torolink And Mapping Data 30`] = `
+Object {
+  "@timestamp": "2022-04-26T18:11:31.286Z",
+  "@version": "1",
+  "COPIED_FROM": "torolink.csudh.edu",
+  "DESCRIPTION": "\\"Empowering Tomorrow's Leaders\\"
+Join theLSBA familiafor another weekly meeting, these meetings are opened to all.
+During weekly meetings we discuss upcoming events, participate in skill building workshops, bring in guest speakers and most importantly build on our familia. At any given weekly meeting you can find alumni visiting or meet some of our friends from any of our network of 14 universities across California. Come find out how we help to improve the lives of students at CSUDH, and learn about how we can help you growprofessionally, personally,andacademically.
+Wednesday's are great days to come find out about the buffet that is LSBA, whether you are looking for professional or social events, we got you. This organization is always growing and morphing to the needs and wants of our members. You have an event you want to see on campus or be a part of? come tell us about it, we're game.
+Can't make it to our Wednesday meetings? no problem, we can always meet with you at a different time and add you to our mailing list.
+Shoot us an email lsbacsudh@gmail.com or DM on IG. @lsbacsudh and while you're at it, hit us with a follow to stay on top of all our events.
+We look forward to seeing you soon.",
+  "EMAIL": "",
+  "END_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "END_TIME": "17:30:00",
+  "ENTITY_NAME": "General Meeting",
+  "EXCEPTION_TEXT": "",
+  "KEYWORD": "TBA,Free Stuff",
+  "LANGUAGES": "{\\"EN\\":{\\"TEXT\\":\\"General Meeting event is happening at TBA on 4th May from 4 PM to  5 PM.\\",\\"VOICE\\":\\"General Meeting event is happening at TBA on 4th May from 4 PM to  5 PM.\\",\\"VOICE_ONLY\\":\\"General Meeting event is happening at TBA on 4th May from 4 PM to  5 PM.\\"}}",
+  "LAT_LON": undefined,
+  "LOCATION": "TBA",
+  "MEDIA": "https://se-images.campuslabs.com/clink/images/a89393d4-61a2-4ead-b5ba-9bbc39ea0c507f92d2f2-d379-4e0d-8387-c1dbb1e5c4fe.png?preset=med-w",
+  "REF_URL": "https://torolink.csudh.edu/event/7630726",
+  "SECONDARY_ENTITY_NAME": "",
+  "START_DATE": StringMatching /\\^20\\[02-9\\]\\[0-9\\]-\\[0-1\\]\\[0-9\\]-\\[0-3\\]\\[0-9\\]\\$/,
+  "START_TIME": "16:30:00",
+  "id": "torocsudh7630726",
+  "media": "https://se-images.campuslabs.com/clink/images/a89393d4-61a2-4ead-b5ba-9bbc39ea0c507f92d2f2-d379-4e0d-8387-c1dbb1e5c4fe.png?preset=med-w",
+  "type": "campus_event_test",
+}
+`;

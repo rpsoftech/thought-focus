@@ -1,0 +1,52 @@
+{
+  "root": "apps/aws-lamda-rss-parser-csu-dh",
+  "sourceRoot": "apps/aws-lamda-rss-parser-csu-dh/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/aws-lamda-rss-parser-csu-dh",
+        "main": "apps/aws-lamda-rss-parser-csu-dh/src/main.ts",
+        "tsConfig": "apps/aws-lamda-rss-parser-csu-dh/tsconfig.app.json",
+        "assets": ["apps/aws-lamda-rss-parser-csu-dh/src/.env","apps/aws-lamda-rss-parser-csu-dh/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/aws-lamda-rss-parser-csu-dh/src/environments/environment.ts",
+              "with": "apps/aws-lamda-rss-parser-csu-dh/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "aws-lamda-rss-parser-csu-dh:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/aws-lamda-rss-parser-csu-dh/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/aws-lamda-rss-parser-csu-dh"],
+      "options": {
+        "jestConfig": "apps/aws-lamda-rss-parser-csu-dh/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
