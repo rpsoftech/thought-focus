@@ -2,7 +2,10 @@ const HtmlReplacerRegex = /<[^>]+>/g;
 const BreaklineReplacer = /(?:\r\n|\r|\n)/g;
 const ExtraThingsReplacer = /(&nbsp;)/g;
 export function HtmlStringToPlainString(d: string): string {
-  return d.replace(HtmlReplacerRegex, '').replace(BreaklineReplacer,'\n').replace(ExtraThingsReplacer,'');
+  return d
+    .replace(HtmlReplacerRegex, '')
+    .replace(BreaklineReplacer, '\n')
+    .replace(ExtraThingsReplacer, '');
 }
 export interface torolinkReqHeaders {
   endsAfter: string;
@@ -108,7 +111,7 @@ export interface EmsCsudhReqObject {
 }
 
 export interface EmsRssResponse {
-  d:string;
+  d: string;
   listData: EMSRSSResponseListObject[];
   params: EMSRSSRespoParamsObj[];
   specialData: EMSRSSRespoSpecialObject[];
@@ -246,12 +249,20 @@ export interface ElasticsearchPushObjectRef {
   media?: string;
   type: 'campus_event_test';
 }
+export interface LocationInterface {
+  ENTITY_NAME: string;
+  LATITUDE: number;
+  LONGITUDE: number;
+  MAP_URL: null | string;
+  SHORT_URL: null | string;
+}
 
 export function GenerateLangNode(
   name: string,
   location: string,
   start: Date,
-  end: Date
+  end: Date,
+  return_only_string = false
 ) {
   const sameDate =
     start.getDate() === end.getDate() &&
@@ -265,6 +276,9 @@ export function GenerateLangNode(
   )} ${months[start.getUTCMonth()]} from ${TimeToAmPM(
     start.getUTCHours()
   )} to ${sameDate} ${TimeToAmPM(end.getUTCHours())}.`;
+  if (return_only_string === true) {
+    return str;
+  }
   return JSON.stringify({
     EN: {
       TEXT: str,
@@ -281,7 +295,9 @@ export function TimeToAmPM(numbertoProcess: number) {
 export function NumbeToNumberString(numbertoProcess: number) {
   let ext = 'th';
   const checkNumber = numbertoProcess % 10;
-  if (checkNumber === 1) {
+  if ([11, 12, 13].includes(numbertoProcess)) {
+    ext = 'th';
+  } else if (checkNumber === 1) {
     ext = 'st';
   } else if (checkNumber === 2) {
     ext = 'nd';

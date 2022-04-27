@@ -3,7 +3,6 @@
   "projects": {
     "aws-lamda-rss-parser-csu-dh": "apps/aws-lamda-rss-parser-csu-dh",
     "poc-chatapplication": "apps/poc-chatapplication",
-    "rss-parser": "apps/rss-parser",
     "sample-socket-v2": "apps/sample-socket-v2"
   }
 }

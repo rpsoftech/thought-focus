@@ -30,6 +30,7 @@ export async function GetAllRssFeedsOfTorolink(options: {
   const prommises = [];
   let result: TorolinkRSSResponseValue[] = [];
   while (CurrentDataCount < TotalData) {
+    const take = CurrentDataCount + 30 > TotalData ? TotalData - CurrentDataCount : 30
     prommises.push(
       ToroLinkReq({
         endsAfter: d,
@@ -37,12 +38,11 @@ export async function GetAllRssFeedsOfTorolink(options: {
         orderByField: 'endsOn',
         status: 'Approved',
         skip: CurrentDataCount,
-        take: 30,
+        take
       }).then((a) => (result = result.concat(a.value)))
     );
-    CurrentDataCount += 30;
+    CurrentDataCount += take;
   }
-
   await Promise.all(prommises);
   const isoTimetamp = new Date().toISOString();
   if (options.limit_months) {

@@ -17,6 +17,7 @@
           "optimization": true,
           "extractLicenses": true,
           "inspect": false,
+          "externalDependencies": "none",
           "fileReplacements": [
             {
               "replace": "apps/aws-lamda-rss-parser-csu-dh/src/environments/environment.ts",
@@ -43,6 +44,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/aws-lamda-rss-parser-csu-dh"],
       "options": {
+        "updateSnapshot": true,
         "jestConfig": "apps/aws-lamda-rss-parser-csu-dh/jest.config.ts",
         "passWithNoTests": true
       }

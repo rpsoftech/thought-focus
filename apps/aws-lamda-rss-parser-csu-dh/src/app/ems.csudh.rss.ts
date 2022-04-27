@@ -1,4 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import {
   DateParser,
   ElasticsearchPushObjectRef,
@@ -6,14 +8,29 @@ import {
   EmsRssResponse,
   EMSRSSResponseListObject,
   GenerateLangNode,
+  LocationInterface,
   TimeParser,
 } from './interfaces';
 
-export async function GetEmsCsudhRssFeed(): Promise<
-  (ElasticsearchPushObjectRef & { id: string })[]
-> {
+let LocationData: LocationInterface[] = [];
+try {
+  LocationData = JSON.parse(
+    readFileSync(join(__dirname, 'assets', 'locations.json')).toString()
+  );
+} catch (error) {
+  console.log('Location File Not Found');
+}
+
+export async function GetEmsCsudhRssFeed(options: {
+  // Only Fetch Limited Number Of Records
+  // limit_records?: number;
+  // Only fetch till next number of months
+  limit_months?: number;
+}): Promise<(ElasticsearchPushObjectRef & { id: string })[]> {
   let startLoop = true;
   let currentoccurance = 0;
+  //Load Location JSON File
+
   let RR: EMSRSSResponseListObject[] = [];
   const cookie = (await GetEmsCookies()).reduce((a, v) => {
     return a + ';' + v.split(';')[0];
@@ -41,6 +58,12 @@ export async function GetEmsCsudhRssFeed(): Promise<
       cookie
     );
     RR = RR.concat(r.listData);
+    if (options.limit_months) {
+      if (currentoccurance + 1 >= options.limit_months) {
+        startLoop = false;
+        continue;
+      }
+    }
     if (r.listData.length === 0) {
       startLoop = false;
       continue;
@@ -105,6 +128,7 @@ export async function GetEmsCsudhRssFeed(): Promise<
       END_TIME: TimeParser(EndsOnDateObj),
       ENTITY_NAME: a.Title,
       LOCATION: a.Location.Name,
+      LAT_LON: GetLocationByLocationName(a.Location.Name),
       KEYWORD: keywords.join(','),
       LANGUAGES: GenerateLangNode(
         a.Title,
@@ -129,6 +153,32 @@ function CSUDHEmsTimeStampStringTpDateObj(date_string: string): Date {
   StartDateObj.setUTCHours(+timeUtc[0], +timeUtc[1], +timeUtc[2]);
   // StartDateObj.setUTCHours(StartDateObj.getUTCHours() - 8);
   return StartDateObj;
+}
+export function GetLocationByLocationName(
+  location: string,
+  locs: LocationInterface[] = LocationData
+):
+  | {
+      lat: number | null;
+      lon: number | null;
+    }
+  | undefined {
+  if (locs.length === 0) {
+    return;
+  } else {
+    const spaceRegex = /\s/gm;
+    location = location.replace(spaceRegex, '');
+    for (const l of locs) {
+      if (l.ENTITY_NAME === location) {
+        console.log(l);
+        return {
+          lat: l.LATITUDE,
+          lon: l.LONGITUDE,
+        };
+      }
+    }
+    return 'asdhasdjapsoidasjdpojop' as any;
+  }
 }
 export function GetMorePageIndexData(
   req: EmsCsudhReqObject & {
