@@ -94,7 +94,7 @@ export async function GetAllRssFeedsOfTorolink(options: {
   });
 }
 
-function CSUDHToroTimeStampStringTpDateObj(date_string: string): Date {
+export function CSUDHToroTimeStampStringTpDateObj(date_string: string): Date {
   const StartDateObj = new Date();
   const dateUTC = date_string.split('T')[0].split('-');
   const timeUtc = date_string.split('T')[1].split('+')[0].split(':');

@@ -51,4 +51,4 @@ export const main = async () => {
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = '1';
   process.exit(1);
 };
-main();
+// main();
