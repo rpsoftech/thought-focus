@@ -4,8 +4,8 @@
 
 | Name | Link |
 | ------ | ------ |
-| ToroLink | [https://torolink.csudh.edu/event][PlDb] |
-| EMS | [https://ems.csudh.edu/MasterCalendar/MasterCalendar.aspx][PlGh] |
+| ToroLink | [https://torolink.csudh.edu/event] |
+| EMS | [https://ems.csudh.edu/MasterCalendar/MasterCalendar.aspx] |
 
 ## Build And Test
 Rss Parser For CSUDH [Node.js](https://nodejs.org/) v14+ to run.
