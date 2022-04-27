@@ -16,7 +16,7 @@ import { GetEmsCsudhRssFeed } from './app/ems.csudh.rss';
 import { GetAllRssFeedsOfTorolink } from './app/torolink.csudh.rss';
 import axios from 'axios';
 
-(async () => {
+const main = async () => {
   function PostDataToElasticSearch(id: string, d: any) {
     return axios.post(`${ConnectionUrl}/${id}`, d).catch(console.log);
   }
@@ -42,4 +42,5 @@ import axios from 'axios';
   );
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = '1';
   process.exit(1);
-})();
+};
+exports.handler = main;
