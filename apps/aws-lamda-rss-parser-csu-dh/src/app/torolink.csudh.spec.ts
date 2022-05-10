@@ -11,9 +11,10 @@ test('Fetchind Data From Torolink And Mapping Data', async () => {
     /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/gim;
   const records = await GetAllRssFeedsOfTorolink({
     limit_records: 10,
-
   });
-  expect(records.length).toBe(10)
+  const records1 = await GetAllRssFeedsOfTorolink({});
+  expect(records1.length > 10).toBeTruthy();
+  expect(records.length).toBe(10);
   records.forEach((a) => {
     expect(
       typeof a.EMAIL === 'undefined' ||
@@ -21,18 +22,18 @@ test('Fetchind Data From Torolink And Mapping Data', async () => {
         emailMatcher.test(a.EMAIL)
     ).toBeTruthy();
     expect(a).toMatchSnapshot({
-      "@timestamp":expect.anything(),
+      '@timestamp': expect.anything(),
       END_DATE: expect.stringMatching(datematchregex),
       END_TIME: expect.stringMatching(timeMathcing),
       START_TIME: expect.stringMatching(timeMathcing),
       START_DATE: expect.stringMatching(datematchregex),
       ENTITY_NAME: expect.any(String),
-      "@version":expect.any(String),
-      
+      '@version': expect.any(String),
+
       id: expect.stringMatching(idmathcing),
     });
   });
-});
+}, 60000);
 test('Fetchind Data From Torolink', async () => {
   const emailMatcher =
     /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/gim;
@@ -48,8 +49,14 @@ test('Fetchind Data From Torolink', async () => {
   records.value.forEach((a) => {
     expect(isNaN(+a.id)).toBeFalsy();
     expect(typeof a.institutionId === 'number').toBeTruthy();
-    expect(a.latitude === null || (typeof a.latitude === 'string' && isNaN(+a.latitude)===false)).toBeTruthy();
-    expect(a.longitude === null || (typeof a.longitude === 'string' && isNaN(+a.longitude)===false)).toBeTruthy();
+    expect(
+      a.latitude === null ||
+        (typeof a.latitude === 'string' && isNaN(+a.latitude) === false)
+    ).toBeTruthy();
+    expect(
+      a.longitude === null ||
+        (typeof a.longitude === 'string' && isNaN(+a.longitude) === false)
+    ).toBeTruthy();
     expect(
       a.institutionId === null || typeof a.institutionId === 'number'
     ).toBeTruthy();
@@ -59,4 +66,4 @@ test('Fetchind Data From Torolink', async () => {
       name: expect.any(String),
     });
   });
-});
+}, 60000);

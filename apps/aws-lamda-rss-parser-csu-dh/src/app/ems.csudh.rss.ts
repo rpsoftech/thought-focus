@@ -170,7 +170,6 @@ export function GetLocationByLocationName(
     location = location.replace(spaceRegex, '');
     for (const l of locs) {
       if (l.ENTITY_NAME === location) {
-        console.log(l);
         return {
           lat: l.LATITUDE,
           lon: l.LONGITUDE,

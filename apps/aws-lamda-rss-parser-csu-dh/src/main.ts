@@ -36,11 +36,8 @@ export async function main() {
   ]);
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
   const all = a.concat(b);
-  console.log(all.length);
-
   const keys = all.map((a1) => a1.id);
   const uniq = [...new Set(keys)];
-  console.log(uniq.length);
   await Promise.all(
     all.map((a1) => {
       const id = a1.id;
