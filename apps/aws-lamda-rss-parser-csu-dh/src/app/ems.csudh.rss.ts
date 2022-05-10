@@ -177,7 +177,7 @@ export function GetLocationByLocationName(
         };
       }
     }
-    return 'asdhasdjapsoidasjdpojop' as any;
+    return;
   }
 }
 export function GetMorePageIndexData(
