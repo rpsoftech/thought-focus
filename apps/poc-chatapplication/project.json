@@ -1,12 +1,14 @@
 {
+  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "projectType": "application",
-  "root": "apps/poc-chatapplication",
   "sourceRoot": "apps/poc-chatapplication/src",
   "prefix": "thought-focus",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/poc-chatapplication/browser",
         "index": "apps/poc-chatapplication/src/index.html",
@@ -129,7 +131,9 @@
     "prerender": {
       "executor": "@nguniversal/builders:prerender",
       "options": {
-        "routes": ["/"]
+        "routes": [
+          "/"
+        ]
       },
       "configurations": {
         "production": {

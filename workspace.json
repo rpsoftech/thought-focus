@@ -5,5 +5,6 @@
     "bot-push-notfication": "apps/bot-push-notfication",
     "poc-chatapplication": "apps/poc-chatapplication",
     "sample-socket-v2": "apps/sample-socket-v2"
-  }
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

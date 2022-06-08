@@ -1,22 +1,29 @@
 {
-  "root": "apps/sample-socket-v2",
+  "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
   "sourceRoot": "apps/sample-socket-v2/src",
   "projectType": "application",
   "targets": {
     "build": {
       "executor": "@nrwl/node:webpack",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/sample-socket-v2",
         "main": "apps/sample-socket-v2/src/main.ts",
         "tsConfig": "apps/sample-socket-v2/tsconfig.app.json",
-        "assets": ["apps/sample-socket-v2/src/assets","apps/sample-socket-v2/src/prisma"]
+        "assets": [
+          "apps/sample-socket-v2/src/assets",
+          "apps/sample-socket-v2/src/prisma"
+        ]
       },
       "configurations": {
         "production": {
           "optimization": true,
           "extractLicenses": false,
-          "externalDependencies": ["@prisma/client"],
+          "externalDependencies": [
+            "@prisma/client"
+          ],
           "inspect": false,
           "fileReplacements": [
             {
@@ -35,9 +42,13 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/sample-socket-v2/**/*.ts"]
+        "lintFilePatterns": [
+          "apps/sample-socket-v2/**/*.ts"
+        ]
       }
     }
   },
