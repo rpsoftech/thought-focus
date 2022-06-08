@@ -53,4 +53,6 @@ export async function main() {
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = '1';
   process.exit(1);
 }
-// main();
+if(environment.production === false){
+  main();
+}

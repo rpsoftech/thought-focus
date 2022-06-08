@@ -247,7 +247,7 @@ export interface ElasticsearchPushObjectRef {
   //  format : HH:mm:ss
   WEEKEND_START_TIME?: string;
   media?: string;
-  type: 'campus_event_test';
+  type: string;
 }
 export interface LocationInterface {
   ENTITY_NAME: string;
@@ -317,3 +317,4 @@ export function DateParser(dateObje: Date) {
     .toString()
     .padStart(2, '0')}-${dateObje.getUTCDate().toString().padStart(2, '0')}`;
 }
+export const RSSPARSED_DATA_TYPE = process.env.PARSED_DATA_TYPE || 'campus_event_test'

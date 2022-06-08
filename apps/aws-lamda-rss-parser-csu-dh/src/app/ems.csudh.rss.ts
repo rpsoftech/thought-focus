@@ -9,6 +9,7 @@ import {
   EMSRSSResponseListObject,
   GenerateLangNode,
   LocationInterface,
+  RSSPARSED_DATA_TYPE,
   TimeParser,
 } from './interfaces';
 
@@ -119,9 +120,9 @@ export async function GetEmsCsudhRssFeed(options: {
 
     return {
       id: `torocsudh${a.Id}`,
-      type: 'campus_event_test',
+      type: RSSPARSED_DATA_TYPE,
       '@timestamp': isoTimetamp,
-      '@version': '1',
+      '@version': process.env.version || '1',
       COPIED_FROM: 'ems.csudh.edu',
       DESCRIPTION: a.Description,
       END_DATE: DateParser(EndsOnDateObj),

@@ -4,6 +4,7 @@ import {
   ElasticsearchPushObjectRef,
   GenerateLangNode,
   HtmlStringToPlainString,
+  RSSPARSED_DATA_TYPE,
   TimeParser,
   torolinkReqHeaders,
   TorolinkRSSResponse,
@@ -65,9 +66,9 @@ export async function GetAllRssFeedsOfTorolink(options: {
     };
     return {
       id: `torocsudh${a.id}`,
-      type: 'campus_event_test',
+      type: RSSPARSED_DATA_TYPE,
       '@timestamp': isoTimetamp,
-      '@version': '1',
+      '@version': process.env.version || '1',
       COPIED_FROM: 'torolink.csudh.edu',
       DESCRIPTION: HtmlStringToPlainString(a.description),
       EMAIL: '',
