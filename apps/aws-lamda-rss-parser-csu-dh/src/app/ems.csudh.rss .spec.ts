@@ -14,8 +14,6 @@ test('Get Array Of Cookies', async () => {
 }, 20000);
 test('Get Location Data From Json', async () => {
   let LocationData: LocationInterface[] = [];
-  console.log(join(__dirname, '..', 'assets', 'locations.json'));
-
   try {
     LocationData = JSON.parse(
       readFileSync(join(__dirname, '..', 'assets', 'locations.json')).toString()

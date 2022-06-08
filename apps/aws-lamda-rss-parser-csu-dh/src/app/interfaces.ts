@@ -197,7 +197,7 @@ export interface ElasticsearchPushObjectRef {
   //Place Name
   LOCATION: string;
   // url
-  MEDIA?: string;
+  MEDIA?: string[];
   OCCURANCE?: string;
   PHONE?: string;
   PRESENTER?: string;

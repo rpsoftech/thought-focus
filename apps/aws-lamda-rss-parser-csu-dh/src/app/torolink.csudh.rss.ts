@@ -87,7 +87,7 @@ export async function GetAllRssFeedsOfTorolink(options: {
       REF_URL: `https://torolink.csudh.edu/event/${a.id}`,
       SECONDARY_ENTITY_NAME: '',
       media: `https://se-images.campuslabs.com/clink/images/${a.imagePath}?preset=med-w`,
-      MEDIA: `https://se-images.campuslabs.com/clink/images/${a.imagePath}?preset=med-w`,
+      MEDIA: [],
       START_DATE: DateParser(StartsOnDateObj),
       START_TIME: TimeParser(StartsOnDateObj),
     };

@@ -139,7 +139,7 @@ export async function GetEmsCsudhRssFeed(options: {
       REF_URL: `https://ems.csudh.edu/MasterCalendar/EventDetails.aspx?EventDetailId=${a.Id}`,
       SECONDARY_ENTITY_NAME: '',
       media: a.EventImageURL,
-      MEDIA: a.EventImageURL,
+      MEDIA: [],
       START_DATE: DateParser(StartsOnDateObj),
       START_TIME: TimeParser(StartsOnDateObj),
     };
@@ -170,7 +170,6 @@ export function GetLocationByLocationName(
     location = location.replace(spaceRegex, '');
     for (const l of locs) {
       if (l.ENTITY_NAME === location) {
-        console.log(l);
         return {
           lat: l.LATITUDE,
           lon: l.LONGITUDE,
