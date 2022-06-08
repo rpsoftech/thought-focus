@@ -1,0 +1,31 @@
+{
+  "usersdata": {
+    "userid1": {
+      "pandetails": "true || false || actual data"
+    }
+  },
+  "notifications": {
+    "id1": {
+      "userid": "12345676",
+      "send_to_channel_timestamp": {
+        "teams": "timestamp"
+      },
+      "created_at": "timestamp"
+    },
+    "id2": {},
+    "id3": {}
+  },
+  "NotificationchannelsQue": {
+    "teams": {
+      "userid1": ["id1"]
+    }
+  },
+  "DataCheckConfig": {
+    "pandetailscheck": {
+      "type": "string",
+      "length": 10,
+      "regex": "/^[a-z]{5}[0-9]{4}[a-z]{1}$/i",
+      "keepdata": "false - False Meanse Do not keep the data once it is there"
+    }
+  }
+}

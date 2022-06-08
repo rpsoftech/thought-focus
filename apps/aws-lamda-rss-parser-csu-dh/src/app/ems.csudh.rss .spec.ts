@@ -11,7 +11,7 @@ test('Get Array Of Cookies', async () => {
   (await GetEmsCookies()).forEach((a) =>
     expect(typeof a === 'string').toBeTruthy()
   );
-}, 20000);
+}, 60000);
 test('Get Location Data From Json', async () => {
   let LocationData: LocationInterface[] = [];
   try {
@@ -41,7 +41,7 @@ test('Get Location Data From Json', async () => {
     lat: 33.859814,
     lon: -118.256325,
   });
-});
+}, 60000);
 test('Fetchind Data From EmsCSUDH And Mapping Data', async () => {
   const datematchregex = /^20[02-9][0-9]-[0-1][0-9]-[0-3][0-9]$/;
   const idmathcing = /^torocsudh[0-9]*$/;
@@ -69,4 +69,4 @@ test('Fetchind Data From EmsCSUDH And Mapping Data', async () => {
       id: expect.stringMatching(idmathcing),
     });
   });
-},30000);
+}, 60000);

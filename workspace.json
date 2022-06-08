@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "aws-lamda-rss-parser-csu-dh": "apps/aws-lamda-rss-parser-csu-dh",
+    "bot-push-notfication": "apps/bot-push-notfication",
     "poc-chatapplication": "apps/poc-chatapplication",
     "sample-socket-v2": "apps/sample-socket-v2"
   }

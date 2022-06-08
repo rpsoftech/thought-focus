@@ -1,0 +1,52 @@
+{
+  "root": "apps/bot-push-notfication",
+  "sourceRoot": "apps/bot-push-notfication/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/bot-push-notfication",
+        "main": "apps/bot-push-notfication/src/main.ts",
+        "tsConfig": "apps/bot-push-notfication/tsconfig.app.json",
+        "assets": ["apps/bot-push-notfication/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/bot-push-notfication/src/environments/environment.ts",
+              "with": "apps/bot-push-notfication/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "bot-push-notfication:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/bot-push-notfication/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/bot-push-notfication"],
+      "options": {
+        "jestConfig": "apps/bot-push-notfication/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
