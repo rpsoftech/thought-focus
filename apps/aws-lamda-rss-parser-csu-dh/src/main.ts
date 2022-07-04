@@ -16,14 +16,14 @@ const ConnectionUrl = env.ELASTICURL;
 const LimitedRecords = env.LIMITRECORDS;
 const limit_months = env.LIMITMONTHS;
 // Main Executor Functions
-export async function main() {
-  async function PostDataToElasticSearch(id: string, d: any) {
-    try {
-      return await axios.post(`${ConnectionUrl}/${id}`, d);
-    } catch (message) {
-      return console.log(message.message || message.error);
-    }
+async function PostDataToElasticSearch(id: string, d: any) {
+  try {
+    return await axios.post(`${ConnectionUrl}/${id}`, d);
+  } catch (message) {
+    return console.log(message.message || message.error);
   }
+}
+export async function main() {
   const [a, b] = await Promise.all([
     GetAllRssFeedsOfTorolink({
       limit_records: LimitedRecords ? +LimitedRecords : undefined,
@@ -36,7 +36,9 @@ export async function main() {
   ]);
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
   const all = a.concat(b);
+  // Maping ids from Array
   const keys = all.map((a1) => a1.id);
+  // Creating unique ids from Array
   const uniq = [...new Set(keys)];
   await Promise.all(
     all.map((a1) => {
@@ -53,6 +55,6 @@ export async function main() {
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = '1';
   process.exit(1);
 }
-if(environment.production === false){
+if (environment.production === false) {
   main();
 }

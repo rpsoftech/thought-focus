@@ -65,7 +65,6 @@ test('Fetchind Data From EmsCSUDH And Mapping Data', async () => {
       START_DATE: expect.stringMatching(datematchregex),
       ENTITY_NAME: expect.any(String),
       '@version': expect.any(String),
-
       id: expect.stringMatching(idmathcing),
     });
   });

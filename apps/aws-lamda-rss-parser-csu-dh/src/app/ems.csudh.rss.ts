@@ -41,7 +41,6 @@ export async function GetEmsCsudhRssFeed(options: {
   while (startLoop) {
     const d = new Date();
     d.setMonth(d.getMonth() + currentoccurance);
-    currentoccurance++;
     const r = await EmsReloadCalander(
       {
         startDate: `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`,
@@ -60,7 +59,7 @@ export async function GetEmsCsudhRssFeed(options: {
     );
     RR = RR.concat(r.listData);
     if (options.limit_months) {
-      if (currentoccurance + 1 >= options.limit_months) {
+      if (currentoccurance > options.limit_months) {
         startLoop = false;
         continue;
       }
@@ -69,6 +68,7 @@ export async function GetEmsCsudhRssFeed(options: {
       startLoop = false;
       continue;
     }
+    currentoccurance++;
     let pageindex = r.params[0].PageCount;
     while (pageindex > 0) {
       Promised.push(
